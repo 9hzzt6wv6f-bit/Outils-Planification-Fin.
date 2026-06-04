@@ -6,73 +6,76 @@
 <title>Liste de vérification — Plan financier | TD Wealth</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--nd:#0F2344;--n:#1B3A6B;--nm:#2D5299;--g:#D4AF37;--gd:#7A5C1E;--gl:#F5E27A;--w:#fff;--bg:#EEF0F7;--s:#F7F8FB;--g100:#EAECF3;--g200:#D3D6E1;--g400:#8F96A7;--g600:#555D6F;--g800:#192033}
+:root{--nd:#0F2344;--n:#1B3A6B;--nm:#2D5299;--g:#D4AF37;--gd:#7A5C1E;--gl:#F5E27A;--w:#fff;--bg:#F3F5FA;--s:#FFFFFF;--g100:#E8EBF2;--g200:#D0D4DF;--g400:#8F96A7;--g600:#555D6F;--g800:#192033}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);min-height:100vh;color:var(--g800);font-size:14px;line-height:1.5}
 
-/* HEADER */
-.hdr{background:var(--nd);padding:22px 32px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.28)}
-.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-.hdr-brand{color:var(--g);font-size:9px;font-weight:600;letter-spacing:.18em;margin-bottom:5px;text-transform:uppercase}
-.hdr-title{color:#fff;font-size:20px;font-weight:500;margin-bottom:3px;letter-spacing:-.2px}
-.hdr-sub{color:#7A90BB;font-size:12px}
-.hdr-right{text-align:right}
-.hdr-name{color:#fff;font-size:12px;font-weight:500}
-.hdr-info{color:#7A90BB;font-size:10.5px;margin-top:2px}
-.hdr-actions{display:flex;gap:7px;margin-top:10px;justify-content:flex-end;flex-wrap:wrap}
-.hbtn{padding:5px 13px;border-radius:7px;font-size:11px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;border:1px solid rgba(212,175,55,.45);background:transparent;color:var(--g);transition:all .15s}
-.hbtn:hover{background:rgba(212,175,55,.12)}
-.hbtn-s{background:var(--g);color:var(--nd);border-color:var(--g)}
-.hbtn-s:hover{background:var(--gl)}
-.gold-line{height:1px;background:linear-gradient(90deg,var(--g) 0%,rgba(212,175,55,.1) 70%,transparent 100%);margin-bottom:14px}
+/* TOP BAR */
+.topbar{background:var(--nd);padding:0 32px;height:38px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topbar-brand{color:var(--g);font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.topbar-info{color:rgba(255,255,255,.55);font-size:10px}
+.topbar-name{color:rgba(255,255,255,.9);font-size:10px;font-weight:500}
+
+/* MAIN HEADER */
+.hdr{background:#fff;border-bottom:1px solid var(--g100);padding:16px 32px 0;box-shadow:0 1px 8px rgba(15,35,68,.07);position:sticky;top:0;z-index:100}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.hdr-title{color:var(--nd);font-size:20px;font-weight:600;letter-spacing:-.3px}
+.hdr-sub{color:var(--g400);font-size:11px;margin-top:2px}
+.hdr-actions{display:flex;gap:7px;flex-wrap:wrap}
+.hbtn{padding:6px 14px;border-radius:7px;font-size:11px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;border:1px solid var(--g200);background:#fff;color:var(--g600);transition:all .15s}
+.hbtn:hover{border-color:var(--nd);color:var(--nd)}
+.hbtn-s{background:var(--nd);color:#fff;border-color:var(--nd)}
+.hbtn-s:hover{background:var(--n)}
+.hbtn-gold{background:var(--g);color:var(--nd);border-color:var(--g);font-weight:600}
+.hbtn-gold:hover{background:var(--gl)}
 
 /* PERIOD TABS */
-.per-tabs{display:flex;gap:3px;flex-wrap:wrap}
-.ptab{display:flex;align-items:center;gap:10px;padding:9px 16px 11px;border-radius:8px 8px 0 0;cursor:pointer;user-select:none;transition:all .2s;border:none;font-family:'Inter',sans-serif}
-.ptab.on{background:#fff}
-.ptab.off{background:transparent}
-.ptab.off:hover{background:rgba(255,255,255,.08)}
+.per-tabs{display:flex;gap:0;border-bottom:none;margin-top:4px}
+.ptab{display:flex;align-items:center;gap:9px;padding:10px 18px 12px;cursor:pointer;user-select:none;transition:all .2s;border-bottom:3px solid transparent;position:relative}
+.ptab.on{border-bottom-color:var(--g)}
+.ptab.off:hover{border-bottom-color:var(--g100)}
 .ptab-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;transition:all .2s}
 .ptab.on .ptab-num{background:var(--nd);color:var(--g)}
-.ptab.off .ptab-num{background:rgba(255,255,255,.12);color:#7A90BB}
+.ptab.off .ptab-num{background:var(--g100);color:var(--g400)}
 .ptab-txt{line-height:1.25}
-.ptab-lbl{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
-.ptab.on .ptab-lbl{color:var(--g)}
-.ptab.off .ptab-lbl{color:#5A6E8A}
-.ptab-name{font-size:12px;font-weight:500;transition:color .2s}
+.ptab-lbl{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.ptab.on .ptab-lbl{color:var(--gd)}
+.ptab.off .ptab-lbl{color:var(--g400)}
+.ptab-name{font-size:12px;font-weight:500}
 .ptab.on .ptab-name{color:var(--nd)}
-.ptab.off .ptab-name{color:#7A90BB}
-.ptab-prog{font-size:9px;font-weight:600;margin-top:2px;transition:color .2s}
+.ptab.off .ptab-name{color:var(--g600)}
+.ptab-prog{font-size:9px;font-weight:500;margin-top:1px}
 .ptab.on .ptab-prog{color:var(--g)}
-.ptab.off .ptab-prog{color:#5A6E8A}
+.ptab.off .ptab-prog{color:var(--g400)}
 
 /* CTRL BAR */
-.ctrl{background:#fff;padding:9px 32px;border-bottom:1px solid var(--g100);display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:130px;z-index:90;box-shadow:0 1px 6px rgba(15,35,68,.06)}
-.pf-grp{display:flex;gap:3px;background:var(--s);border-radius:20px;padding:3px;border:1px solid var(--g200)}
-.pfbtn{padding:4px 12px;border-radius:16px;cursor:pointer;font-size:11px;font-weight:500;font-family:'Inter',sans-serif;border:none;background:transparent;color:var(--g600);transition:all .15s}
-.pfbtn.on{background:#fff;color:var(--nd);box-shadow:0 1px 3px rgba(15,35,68,.12)}
+.ctrl{background:#fff;padding:9px 32px;border-bottom:1px solid var(--g100);display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:120px;z-index:90;box-shadow:0 1px 4px rgba(15,35,68,.05)}
+.pf-grp{display:flex;gap:3px;background:var(--bg);border-radius:20px;padding:3px;border:1px solid var(--g200)}
+.pfbtn{padding:4px 13px;border-radius:16px;cursor:pointer;font-size:11px;font-weight:500;font-family:'Inter',sans-serif;border:none;background:transparent;color:var(--g600);transition:all .15s}
+.pfbtn.on{background:#fff;color:var(--nd);box-shadow:0 1px 3px rgba(15,35,68,.1)}
 .prog-w{flex:1;min-width:130px;display:flex;align-items:center;gap:10px}
 .prog-t{flex:1;height:5px;background:var(--g100);border-radius:3px;overflow:hidden}
 .prog-f{height:100%;background:var(--g);border-radius:3px;transition:width .35s ease}
 .prog-l{font-size:12px;color:var(--g600);white-space:nowrap}
 .prog-n{font-weight:600;color:var(--nd)}
-.prog-p{color:var(--g);font-weight:600;margin-left:4px}
+.prog-p{color:var(--gd);font-weight:600;margin-left:4px}
 .btns{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
 .btn{padding:5px 12px;border-radius:20px;cursor:pointer;font-size:11px;font-weight:500;user-select:none;transition:all .15s;border:1px solid transparent;font-family:'Inter',sans-serif}
 .btn-star{background:#FFF9EC;color:var(--gd);border-color:var(--g)}
 .btn-star.on{background:var(--g);color:var(--nd)}
-.btn-n{background:var(--s);color:var(--g600);border-color:var(--g200)}
-.btn-n:hover{background:var(--g100)}
+.btn-nd{background:var(--bg);color:var(--g600);border-color:var(--g200)}
+.btn-nd:hover{background:var(--g100)}
 .btn-r{background:#FDF3F2;color:#C0392B;border-color:#F5C0BC}
-.btn-r:hover{background:#fde8e7}
 
 /* MAIN */
-main{padding:14px 32px 32px;max-width:980px;margin:0 auto}
+main{padding:16px 32px 32px;max-width:980px;margin:0 auto}
 .tiers{display:flex;flex-direction:column;gap:10px}
 
 /* CARD */
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(15,35,68,.08),0 0 0 1px rgba(15,35,68,.05);transition:box-shadow .2s}
-.card:hover{box-shadow:0 2px 12px rgba(15,35,68,.12),0 0 0 1px rgba(15,35,68,.07)}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(15,35,68,.07),0 0 0 1px rgba(15,35,68,.04);transition:box-shadow .2s}
+.card:hover{box-shadow:0 3px 14px rgba(15,35,68,.11),0 0 0 1px rgba(15,35,68,.06)}
 .card-hdr{padding:14px 20px;cursor:pointer;display:flex;align-items:center;gap:13px;user-select:none;transition:background .2s;border-left:4px solid transparent}
 .tier-num{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;flex-shrink:0}
 .tier-meta{flex:1;min-width:0}
@@ -92,9 +95,10 @@ main{padding:14px 32px 32px;max-width:980px;margin:0 auto}
 /* ITEMS */
 .items-list{border-top:1px solid var(--g100)}
 .item{transition:background .15s}
-.item.done{background:#FAFBF6}
+.item.done{background:#FAFCF6}
 .item-inner{padding:11px 20px 11px 24px;display:flex;align-items:flex-start;gap:12px}
-.cb{width:18px;height:18px;border-radius:5px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:all .15s;border:2px solid var(--g200)}
+.cb{width:18px;height:18px;border-radius:5px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:all .15s;border:2px solid var(--g200);background:#fff}
+.cb:hover{border-color:var(--g)}
 .cb.on{background:var(--g);border-color:var(--g)}
 .cb-chk{color:#fff;font-size:11px;font-weight:700;line-height:1}
 .item-body{flex:1;min-width:0}
@@ -109,61 +113,93 @@ main{padding:14px 32px 32px;max-width:980px;margin:0 auto}
 .expand-btn{display:inline-flex;align-items:center;gap:4px;cursor:pointer;font-size:10px;color:var(--nm);margin-top:4px;background:none;border:none;font-family:'Inter',sans-serif;padding:2px 0;font-weight:500}
 .expand-arr{font-size:8px;transition:transform .15s;display:inline-block}
 .expand-arr.open{transform:rotate(90deg)}
-.detail{margin-top:7px;padding:10px 14px;background:var(--s);border-radius:7px;font-size:11.5px;color:var(--g600);line-height:1.7;border-left:3px solid transparent}
+.detail{margin-top:7px;padding:10px 14px;background:var(--bg);border-radius:7px;font-size:11.5px;color:var(--g600);line-height:1.7;border-left:3px solid transparent}
+
+/* SYNTHESIS DRAWER */
+.backdrop{position:fixed;inset:0;background:rgba(15,35,68,.35);z-index:199;display:none;backdrop-filter:blur(2px)}
+.backdrop.open{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:540px;background:#fff;z-index:200;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s ease;box-shadow:-6px 0 32px rgba(15,35,68,.16)}
+.drawer.open{transform:translateX(0)}
+.dr-hdr{background:var(--nd);padding:20px 24px 16px;flex-shrink:0}
+.dr-hdr-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.dr-title{color:#fff;font-size:17px;font-weight:500}
+.dr-sub{color:#7A90BB;font-size:11px;margin-top:3px}
+.dr-close{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .15s;flex-shrink:0;margin-left:12px}
+.dr-close:hover{background:rgba(255,255,255,.2)}
+.dr-gold{height:1px;background:linear-gradient(90deg,var(--g) 0%,rgba(212,175,55,.1) 100%);margin-bottom:14px}
+.dr-tabs{display:flex;gap:3px}
+.dr-tab{padding:6px 12px;border-radius:6px 6px 0 0;cursor:pointer;font-size:11px;font-weight:500;font-family:'Inter',sans-serif;border:none;transition:all .15s;user-select:none}
+.dr-tab.on{background:#fff;color:var(--nd)}
+.dr-tab.off{background:rgba(255,255,255,.1);color:#7A90BB}
+.dr-tab.off:hover{background:rgba(255,255,255,.18)}
+.dr-body{flex:1;overflow-y:auto;padding:20px 24px}
+.dr-empty{text-align:center;padding:40px 20px;color:var(--g400);font-size:13px}
+.dr-per-hdr{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--g);text-transform:uppercase;margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--g100)}
+.dr-per-hdr:first-child{margin-top:0}
+.dr-tier-hdr{font-size:11px;font-weight:600;color:var(--nd);margin:14px 0 6px;display:flex;align-items:center;gap:6px}
+.dr-tier-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dr-item{background:var(--bg);border-radius:8px;padding:12px 14px;margin-bottom:8px;position:relative;border:1px solid var(--g100)}
+.dr-item-title{font-size:12px;font-weight:600;color:var(--nd);margin-bottom:6px;padding-right:60px}
+.dr-item-text{font-size:12px;color:var(--g600);line-height:1.65}
+.dr-copy-btn{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:6px;background:#fff;border:1px solid var(--g200);color:var(--g600);font-size:10px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.dr-copy-btn:hover{border-color:var(--g);color:var(--gd)}
+.dr-copy-btn.copied{background:var(--g);border-color:var(--g);color:var(--nd)}
+.dr-footer{background:var(--bg);border-top:1px solid var(--g100);padding:14px 24px;display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.dr-footer-btn{flex:1;padding:9px 16px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;border:1px solid var(--g200);background:#fff;color:var(--g600);text-align:center;white-space:nowrap}
+.dr-footer-btn:hover{border-color:var(--nd);color:var(--nd)}
+.dr-footer-btn-primary{background:var(--nd);color:#fff;border-color:var(--nd)}
+.dr-footer-btn-primary:hover{background:var(--n)}
 
 /* FOOTER */
 footer{max-width:980px;margin:0 auto;padding:0 32px 36px}
-.legend{padding:11px 15px;background:var(--s);border-radius:10px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px;border:1px solid var(--g100)}
+.legend{padding:11px 15px;background:#fff;border-radius:10px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:10px;border:1px solid var(--g100)}
 .legend-hd{font-size:10px;font-weight:600;color:var(--g600)}
 .legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--g600)}
 .disc{font-size:9.5px;color:var(--g400);line-height:1.65;padding:10px 0;border-top:1px solid var(--g100)}
 
-/* RESPONSIVE */
 @media(max-width:640px){
-  .hdr{padding:16px 16px 0}
-  .ctrl{padding:8px 16px;top:116px}
+  .topbar{padding:0 14px}.hdr{padding:12px 14px 0}
+  .ctrl{padding:7px 14px;top:106px}
   main{padding:10px 14px 24px}
   footer{padding:0 14px 24px}
-  .hdr-top{flex-direction:column}
-  .hdr-right{text-align:left}
-  .hdr-actions{justify-content:flex-start}
-  .ptab{padding:7px 10px 9px}
+  .drawer{width:100%}
+  .per-tabs .ptab{padding:8px 10px 10px}
 }
-
-/* PRINT */
 @media print{
-  .hdr{position:relative;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .hdr-actions,.ctrl,.expand-btn,.btns,.per-tabs,.pf-grp{display:none!important}
+  .topbar,.hdr-actions,.ctrl,.expand-btn,.btns,.per-tabs,.pf-grp,.backdrop,.drawer{display:none!important}
   .card{box-shadow:none!important;border:1px solid #ddd!important;break-inside:avoid;margin-bottom:6px!important}
   .card-hdr,.tier-num,.tier-tag{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .detail{display:block!important}
   body{background:#fff!important}
   main,footer{padding-left:16px!important;padding-right:16px!important}
 }
+
 </style>
 </head>
 <body>
 
-<header class="hdr" id="hdr">
+<div class="topbar">
+  <div class="topbar-brand">Gestion de patrimoine TD &nbsp;·&nbsp; Conseils de placement privés</div>
+  <div class="topbar-right">
+    <span class="topbar-name">Olivier Quintal, B.A.A. (spéc.), Pl. Fin.</span>
+    <span class="topbar-info">418-654-3042 &nbsp;·&nbsp; Olivier.Quintal@td.com</span>
+  </div>
+</div>
+
+<div class="hdr" id="hdr">
   <div class="hdr-top">
     <div>
-      <div class="hdr-brand">Gestion de patrimoine TD &nbsp;·&nbsp; Conseils de placement privés</div>
       <div class="hdr-title">Liste de vérification — Plan financier</div>
       <div class="hdr-sub">Québec 2025 &nbsp;·&nbsp; Trois périodes</div>
     </div>
-    <div class="hdr-right">
-      <div class="hdr-name">Olivier Quintal, B.A.A. (spéc.), Pl. Fin.</div>
-      <div class="hdr-info">Conseiller en placement &nbsp;|&nbsp; Planificateur financier</div>
-      <div class="hdr-info">418-654-3042 &nbsp;·&nbsp; Olivier.Quintal@td.com</div>
-      <div class="hdr-actions">
-        <button class="hbtn" onclick="window.print()">⎙ Imprimer / PDF</button>
-        <button class="hbtn hbtn-s" onclick="exportOpen()">↓ Exporter les points ouverts</button>
-      </div>
+    <div class="hdr-actions">
+      <button class="hbtn hbtn-gold" onclick="openSynthesis()">&#9776; Synthèse client</button>
+      <button class="hbtn" onclick="window.print()">&#9113; Imprimer / PDF</button>
+      <button class="hbtn hbtn-s" onclick="exportOpen()">&#8595; Points ouverts</button>
     </div>
   </div>
-  <div class="gold-line"></div>
   <div class="per-tabs" id="per-tabs"></div>
-</header>
+</div>
 
 <div class="ctrl">
   <div class="pf-grp">
@@ -176,9 +212,9 @@ footer{max-width:980px;margin:0 auto;padding:0 32px 36px}
     <div class="prog-l"><span class="prog-n" id="pn">0</span>/<span id="pt">0</span><span class="prog-p" id="pp">0%</span></div>
   </div>
   <div class="btns">
-    <div class="btn btn-star" id="btn-new" onclick="toggleNew()">★ Nouveaux points</div>
-    <div class="btn btn-n" onclick="expandAll()">Tout développer</div>
-    <div class="btn btn-n" onclick="collapseAll()">Tout réduire</div>
+    <div class="btn btn-star" id="btn-new" onclick="toggleNew()">&#9733; Nouveaux points</div>
+    <div class="btn btn-nd" onclick="expandAll()">Tout développer</div>
+    <div class="btn btn-nd" onclick="collapseAll()">Tout réduire</div>
     <div class="btn btn-r" onclick="resetAll()">Réinitialiser</div>
   </div>
 </div>
@@ -190,15 +226,35 @@ footer{max-width:980px;margin:0 auto;padding:0 32px 36px}
     <span class="legend-hd">Légende</span>
     <span class="legend-item"><span class="badge b-i">Incorporé</span>Professionnel incorporé / Propriétaire uniquement</span>
     <span class="legend-item"><span class="badge b-e">Salarié</span>Salarié uniquement</span>
-    <span class="legend-item"><span class="badge b-new">★ Nouveau</span>Ajouté lors de la dernière révision de la période d'accumulation</span>
+    <span class="legend-item"><span class="badge b-new">&#9733; Nouveau</span>Ajouté lors de la dernière révision (période d'accumulation)</span>
   </div>
   <div class="disc">
-    Document à usage interne. Cette liste constitue une discussion technique générale et devrait être validée dans le cadre d'un mandat professionnel tenant compte de la situation complète du client. Les taux, seuils et règles fiscales sont ceux de l'année d'imposition 2025 pour le Québec et sont sujets à modification. Les stratégies présentées peuvent être assujetties aux règles anti-évitement selon les circonstances. Conseils de placement privés, Gestion de patrimoine TD est une division de TD Waterhouse Canada Inc., filiale de La Banque Toronto-Dominion. © 2025 TD Waterhouse Canada Inc.
+    Document à usage interne. Cette liste constitue une discussion technique générale et devrait être validée dans le cadre d'un mandat professionnel tenant compte de la situation complète du client. Les taux, seuils et règles fiscales sont ceux de 2025 pour le Québec et sont sujets à modification. Conseils de placement privés, Gestion de patrimoine TD est une division de TD Waterhouse Canada Inc., filiale de La Banque Toronto-Dominion. © 2025 TD Waterhouse Canada Inc.
   </div>
 </footer>
 
+<!-- SYNTHESIS DRAWER -->
+<div class="backdrop" id="backdrop" onclick="closeSynthesis()"></div>
+<div class="drawer" id="drawer">
+  <div class="dr-hdr">
+    <div class="dr-hdr-top">
+      <div>
+        <div class="dr-title">Synthèse client</div>
+        <div class="dr-sub">Textes génériques à personnaliser pour chaque plan</div>
+      </div>
+      <button class="dr-close" onclick="closeSynthesis()">&#x2715;</button>
+    </div>
+    <div class="dr-gold"></div>
+    <div class="dr-tabs" id="dr-tabs"></div>
+  </div>
+  <div class="dr-body" id="dr-body"></div>
+  <div class="dr-footer">
+    <button class="dr-footer-btn" onclick="copyAllTexts()">&#128203; Copier tout le texte</button>
+    <button class="dr-footer-btn dr-footer-btn-primary" onclick="exportWord()">&#128196; Exporter en Word (.doc)</button>
+  </div>
+</div>
+
 <script>
-// ─── TIER DEFINITIONS PER PERIOD ───────────────────────────────────────
 const TIERS={
   acc:[
     {id:1,n:'Fondations',s:'Avant toute optimisation fiscale ou financière',a:'#C0392B',bg:'#FDF3F2',tag:'PRIORITÉ ABSOLUE'},
@@ -216,171 +272,137 @@ const TIERS={
   ],
   dec:[
     {id:1,n:'Architecture du revenu de retraite',s:'Structure et sources de revenus',a:'#C0392B',bg:'#FDF3F2',tag:'FONDATION'},
-    {id:2,n:'Gestion fiscale du décaissement',s:'Optimisation de l\'impôt annuel',a:'#B07D0D',bg:'#FFFCEF',tag:'EFFICACITÉ FISCALE'},
+    {id:2,n:'Gestion fiscale du décaissement',s:"Optimisation de l'impôt annuel",a:'#B07D0D',bg:'#FFFCEF',tag:'EFFICACITÉ FISCALE'},
     {id:3,n:'Prestations gouvernementales',s:'RRQ, SV, crédits et coordination',a:'#1B3A6B',bg:'#F0F4FB',tag:'OPTIMISATION'},
     {id:4,n:'Patrimoine corporatif résiduel',s:'Liquidation et structure corporative',a:'#0A6B55',bg:'#EFFAF6',tag:'INCORPORÉ'},
     {id:5,n:'Transmission et succession',s:'Héritage et planification finale',a:'#6B3B9E',bg:'#F7F0FB',tag:'SUCCESSION'},
   ],
 };
 
-// ─── PERIOD META ────────────────────────────────────────────────────────
 const PERIODS=[
   {id:'acc',lbl:'Période 1',name:'Accumulation'},
   {id:'tra',lbl:'Période 2',name:'Transition'},
   {id:'dec',lbl:'Période 3',name:'Décaissement'},
 ];
 
-// ─── ALL ITEMS ──────────────────────────────────────────────────────────
-// p: 'b'=both | 'i'=incorporated | 'e'=employed
-// n: 1=new flag (accumulation section only)
 const DATA=[
-// ── ACCUMULATION T1 ──
-{per:'acc',r:1,id:'1.1',p:'b',n:1,t:"Fonds d'urgence",d:"Vérifier la présence de 3 à 6 mois de dépenses courantes en liquidités accessibles. Véhicules : compte épargne à intérêt élevé, CPG rachetable, marge de crédit préautorisée. L'absence de fonds d'urgence force souvent des rachats prématurés d'actifs enregistrés, déclenchant une imposition non planifiée."},
-{per:'acc',r:1,id:'1.2',p:'b',n:1,t:'Assurance invalidité — couverture et clauses clés',d:"Valider : (1) couverture cible 60-70 % du revenu brut, (2) définition «propre occupation», (3) durée des prestations jusqu'à 65 ans, (4) délai de carence, (5) indexation. Vérifier que la couverture suit la croissance des revenus."},
-{per:'acc',r:1,id:'1.3',p:'i',n:1,t:'Assurance invalidité — arbitrage perso vs corporatif',d:"Primes personnelles (après impôt) → prestations libres d'impôt; primes déduites en société → prestations imposables. Valeur nette de 100 000 $ libre d'impôt ≈ 191 000 $ de prestation imposable au taux de 53,31 % (QC). Recommandation générale : détention personnelle des polices d'invalidité."},
-{per:'acc',r:1,id:'1.4',p:'b',n:1,t:'Assurance vie — besoin, structure et mode de détention',d:"Évaluer : (1) besoin réel (dettes, remplacement de revenus, disposition présumée), (2) temporaire vs permanente, (3) pour incorporés : personnelle vs corporative (le produit excédant le CBR alimente le CDC au décès → dividende libre d'impôt). L'assurance vie corporative permanente est souvent l'outil de transmission le plus fiscalement efficace."},
-{per:'acc',r:1,id:'1.5',p:'b',n:1,t:'Assurance maladie grave',d:"Évaluer si absence de régime collectif. Pour incorporés : détention corporative avec option ROP (récupération des primes si aucun sinistre après 10-15 ans). Pour professionnels libéraux : complément essentiel à l'invalidité."},
-{per:'acc',r:1,id:'1.6',p:'b',n:1,t:'Arbitrage remboursement de dettes vs investissement',d:"Comparer le taux effectif après impôt des dettes avec le rendement attendu net d'impôt. Rembourser d'abord les dettes à taux élevé non déductibles. L'analyse chiffrée s'impose car le biais psychologique oriente souvent vers une décision sous-optimale."},
-{per:'acc',r:1,id:'1.7',p:'b',n:1,t:'Testament — présence, date et adéquation',d:"Vérifier : (1) révision tous les 3-5 ans ou après tout changement de vie, (2) liquidateur désigné et alternatif, (3) cohérence avec les objectifs patrimoniaux, (4) coordination avec la convention d'actionnaires pour les incorporés."},
-{per:'acc',r:1,id:'1.8',p:'b',n:1,t:"Mandat d'inaptitude — présence et portée",d:"Vérifier la présence et l'adéquation du mandat. Recommander des pouvoirs étendus incluant la gestion des placements et la disposition d'actifs. Pour les incorporés : s'assurer que le mandataire peut agir à titre de directeur ou d'actionnaire pour assurer la continuité de la gestion."},
-{per:'acc',r:1,id:'1.9',p:'b',n:1,t:'Désignations de bénéficiaires — à jour et cohérentes',d:"Vérifier les désignations sur REER, FERR, CELI, polices, régimes de retraite. Éviter la désignation «succession» (délais, créanciers, impôt). La désignation sur le contrat prime sur le testament — valider la cohérence entre les deux."},
-{per:'acc',r:1,id:'1.10',p:'i',n:1,t:"Convention d'actionnaires — présence et adéquation",d:"Vérifier : (1) existence, (2) clause buy-sell financée par assurance vie croisée, (3) mécanisme d'évaluation de la JVM, (4) clauses de sortie, (5) adéquation de la couverture avec la valeur actuelle. Une convention non révisée depuis plusieurs années est souvent inadéquate."},
-
-// ── ACCUMULATION T2 ──
-{per:'acc',r:2,id:'2.1',p:'i',n:0,t:'Structure corporative — Opco seule ou Opco + Holdco?',d:"Évaluer la Holdco si surplus annuels > ~50 000 $. Avantages : protection d'actifs, préservation de la DPE, planification successorale. Coût additionnel : ~3 000-8 000 $/an. Généralement rentable dès que les actifs corporatifs dépassent ~200 000 $."},
-{per:'acc',r:2,id:'2.2',p:'i',n:0,t:'Mix salaire/dividendes — calcul du niveau optimal',d:"Calculer le salaire pour : (1) droits REER désirés (18 % × salaire, max 32 490 $ en 2025), (2) critère 5 500 heures (DPE QC), (3) cotisations RRQ souhaitées (jusqu'à 73 200 $). L'excédent reste en société et est versé en dividendes. Valider annuellement avant la clôture."},
-{per:'acc',r:2,id:'2.3',p:'i',n:1,t:'Critère des 5 500 heures — admissibilité DPE québécoise',d:"Le taux provincial réduit de 3,2 % (vs 11,5 %) est conditionnel à 5 500 heures rémunérées annuellement. Rémunération exclusivement en dividendes : risque de perdre la DPE provinciale. Coût potentiel : 41 500 $/an sur 500 000 $ de revenu actif (taux 20,5 % vs 12,2 %)."},
-{per:'acc',r:2,id:'2.4',p:'i',n:0,t:'Revenus passifs — identifier la zone DPE actuelle et projetée',d:"Calculer le RPTA et projeter sur 3-5 ans. Zone verte (≤ 50 000 $) : DPE intacte. Zone orange (50-150k$) : surcoût jusqu'à 35 750 $/an. Zone rouge (≥ 150 000 $) : DPE éliminée, surcoût 71 500 $/an. Anticiper avant d'atteindre le seuil."},
-{per:'acc',r:2,id:'2.5',p:'i',n:0,t:'Transfert Opco → Holdco avant la clôture',d:"Planifier les dividendes intersociétés (art. 112 LIR) avant la fin de l'exercice. Réduit le revenu passif de l'Opco et préserve sa DPE. Coordonner avec le comptable en milieu d'exercice."},
-{per:'acc',r:2,id:'2.6',p:'i',n:1,t:'Revenu de prestation de services personnels — évaluer le risque',d:"Si services fournis essentiellement à un seul client/établissement : risque de requalification en emploi déguisé (art. 125(7) LIR), perte de la DPE. Valider avec un fiscaliste. Diversifier les sources de revenus si possible."},
-{per:'acc',r:2,id:'2.7',p:'e',n:1,t:'Régime de retraite employeur — maximiser la contribution patronale',d:"Cotiser au moins jusqu'au plafond de la contribution patronale (matching). Rendement immédiat de 50-100 % sur la mise — priorité absolue avant tout autre véhicule d'épargne."},
-{per:'acc',r:2,id:'2.8',p:'e',n:1,t:"Facteur d'équivalence — impact réel sur les droits REER",d:"Vérifier le FE sur le T4 et les droits REER réels via Mon dossier ARC. Les participants à un régime PD peuvent avoir des droits très réduits, ce qui modifie la stratégie d'accumulation (davantage axée sur le CELI et les placements non enregistrés fiscalement efficaces)."},
-{per:'acc',r:2,id:'2.9',p:'e',n:1,t:"Options d'achat / régime d'actionnariat — stratégie d'exercice",d:"Analyser : (1) délai de détention optimal pour le gain en capital, (2) moment d'exercice des options (avantage imposable à l'exercice), (3) couverture du risque de concentration, (4) coordination avec la cotisation REER de l'année d'exercice."},
-{per:'acc',r:2,id:'2.10',p:'e',n:1,t:'Avantages imposables — recenser et optimiser',d:"Recenser tous les avantages imposables (véhicule fourni, prêts préférentiels, assurances payées par l'employeur) et évaluer si leur structure est optimale. Certains peuvent être restructurés pour réduire l'imposition."},
-
-// ── ACCUMULATION T3 ──
-{per:'acc',r:3,id:'3.1',p:'b',n:0,t:'CELI — maximisation et stratégie de placements',d:"Vérifier les droits cumulatifs (Mon dossier ARC). Favoriser les placements à fort potentiel de croissance (gain en capital 100 % exempt). Ne jamais surcotiser (pénalité 1 %/mois). Avantage clé : les retraits n'influencent pas les prestations gouvernementales à la retraite."},
-{per:'acc',r:3,id:'3.2',p:'b',n:0,t:'REER — niveau de cotisation optimal',d:"Ne pas cotiser automatiquement le maximum. L'avantage réel est l'écart entre le taux marginal actuel et le taux anticipé à la retraite. Tenir compte des droits inutilisés et du FE si un régime de retraite est en place."},
-{per:'acc',r:3,id:'3.3',p:'b',n:0,t:'REER — report stratégique de la déduction',d:"La cotisation et la déduction sont des opérations indépendantes. Cotiser maintenant (croissance à l'abri) mais reporter la déduction à une année à taux marginal plus élevé. Exemple : médecin en résidence cotise mais déduit à sa première année de pratique complète."},
-{per:'acc',r:3,id:'3.4',p:'b',n:0,t:'REER conjoint — fractionnement du revenu à la retraite',d:"Si écart de revenus anticipé entre conjoints. Cotisations déductibles par le cotisant, imposées chez le bénéficiaire. Règle d'attribution : 3 ans entre la dernière cotisation et le retrait. Réduit la facture fiscale globale du couple à la retraite."},
-{per:'acc',r:3,id:'3.5',p:'b',n:0,t:"REEE — cotiser jusqu'au maximum de subvention annuel",d:"2 500 $/enfant/an pour maximiser la SCEE fédérale (500 $) et l'IQEE québécoise (250 $) — rendement garanti de 30 %. Si droits inutilisés : rattrapage possible de 5 000 $/an. Priorité avant les cotisations REER supplémentaires si le budget est limité."},
-{per:'acc',r:3,id:'3.6',p:'i',n:0,t:'Placements corporatifs — composition pour minimiser le RPTA',d:"Favoriser : actions croissance (gain en capital = 50 % dans RPTA), actions canadiennes à dividendes (Partie IV, RPTA = 0), assurance vie CSV (hors RPTA). Limiter : CPG, obligations, fonds distributeurs (intérêts = 100 % dans RPTA). Un portefeuille bien structuré peut produire le même rendement avec un RPTA 30-50 % inférieur."},
-{per:'acc',r:3,id:'3.7',p:'i',n:0,t:'CDC — solde disponible et dividende en capital prioritaire',d:"Vérifier le solde CDC (tenu par le comptable). Si positif : distribuer en priorité absolue avant tout autre dividende — distribution libre d'impôt souvent sous-exploitée. Alimenté par la portion non imposable des gains en capital et le produit d'assurance excédant le CBR."},
-{per:'acc',r:3,id:'3.8',p:'i',n:0,t:"IMRTD — planifier la récupération de l'impôt remboursable",d:"Calculer le solde IMRTD déterminé et non déterminé. Taux de remboursement : 38,33 % des dividendes imposables versés. L'IMRTD non récupéré est un coût d'opportunité réel. Planifier des dividendes annuels suffisants pour le récupérer progressivement."},
-{per:'acc',r:3,id:'3.9',p:'i',n:0,t:'Assurance vie corporative — accumulation hors RPTA et transmission',d:"Double avantage : (1) la croissance CSV n'est pas incluse dans le RPTA; (2) au décès, le produit excédant le CBR alimente le CDC → dividende libre d'impôt. L'outil de transmission le plus fiscalement efficace en structure corporative."},
-{per:'acc',r:3,id:'3.10',p:'i',n:0,t:'RRI — évaluer la pertinence dès 45 ans',d:"À partir de ~45 ans, cotisations RRI > plafond REER (ex. 50 ans : ~62 000 $ vs 32 490 $). Avantages : déductibles pour la société, actifs protégés des créanciers, réduction du revenu passif. Requis : salaire T4 maintenu, ~250 000 $ en REER existant. Frais annuels ~3 000-5 000 $."},
-{per:'acc',r:3,id:'3.11',p:'b',n:1,t:'Prêt au taux prescrit — fractionnement de revenus entre conjoints',d:"Si écart de taux marginal entre conjoints : prêt au taux prescrit de l'ARC au conjoint à revenu plus faible pour investir. Revenus générés imposés chez le bénéficiaire. Taux payable avant le 30 janvier de chaque année. Contourne les règles d'attribution (art. 74.1 LIR)."},
-{per:'acc',r:3,id:'3.12',p:'b',n:1,t:'Placements non enregistrés — structure de détention efficace',d:"Détenir les placements générant des revenus récurrents au nom du conjoint à taux marginal plus bas. Attention aux règles d'attribution pour les transferts directs (art. 74.1 LIR). Le prêt au taux prescrit contourne ces règles."},
-{per:'acc',r:3,id:'3.13',p:'b',n:1,t:"Manœuvre Smith — crédit levier sur l'hypothèque résidentielle",d:"Convertir progressivement l'intérêt hypothécaire non déductible en intérêt déductible sur placement. Chaque remboursement de capital libère de la marge, réempruntée pour investir. Analyse obligatoire du profil de risque avant toute recommandation."},
-
-// ── ACCUMULATION T4 ──
-{per:'acc',r:4,id:'4.1',p:'b',n:0,t:'Décaissement du REEE — optimisation des PAE',d:"Les PAE sont imposables chez l'étudiant. Stratégie : (1) retirer les cotisations d'abord (libres d'impôt), (2) calibrer les PAE selon le revenu étudiant (crédits de base non utilisés). Si l'enfant n'étudie pas : transfert au REER (max 50 000 $, droits requis) ou retrait avec impôt + pénalité de 20 %."},
-{per:'acc',r:4,id:'4.2',p:'b',n:0,t:'Changement de véhicule — analyse de la structure optimale',d:"Analyser : (1) % d'usage professionnel (journal de bord obligatoire), (2) avantage imposable si usage personnel d'un véhicule en société, (3) plafond DPA Cat. 10A : 36 000 $+taxes (2025), (4) bail vs achat après impôt, (5) récupération DPA potentielle à la vente du véhicule existant."},
-{per:'acc',r:4,id:'4.3',p:'b',n:0,t:"Achat d'une résidence secondaire (chalet, condo, etc.)",d:"(1) Mode de détention : personnelle (exonération résidence principale), fiducie, société (déconseillé : taux 50,17 % sur gain); (2) optimisation de la désignation résidence principale (règle du +1); (3) si usage locatif : déductibilité, récupération DPA, changement d'usage (art. 45 LIR)."},
-{per:'acc',r:4,id:'4.4',p:'b',n:1,t:'Rémunération variable et bonus — timing fiscal optimal',d:"Pour salariés : cotiser au REER l'année de réception du bonus. Pour incorporés : choisir l'exercice fiscal optimal pour le versement selon les seuils de taux. Anticiper l'impact sur les acomptes provisionnels."},
-{per:'acc',r:4,id:'4.5',p:'b',n:1,t:'Enfant ou bénéficiaire handicapé — REEI et protections spécifiques',d:"Si admissible au CIPH (T2201) : REEI — Bon (jusqu'à 20 000 $) + Subvention (jusqu'à 70 000 $). Fiducie Henson (inter vivos) pour préserver l'admissibilité aux prestations sociales (Programme de solidarité sociale QC). Valider l'admissibilité au CIPH avec le médecin traitant avant toute démarche."},
-{per:'acc',r:4,id:'4.6',p:'i',n:1,t:'Gel successoral préliminaire — évaluer la pertinence',d:"Si l'entreprise a une valeur significative et les enfants approchent de l'âge adulte : évaluer un gel (art. 86 LIR) pour cristalliser la JVM actuelle et transférer la croissance future aux successeurs. L'ECGC peut être utilisé lors du gel. Délai minimal 24 mois avant vente."},
-{per:'acc',r:4,id:'4.7',p:'i',n:1,t:"Fiducie familiale — multiplication de l'ECGC",d:"Si vente envisagée dans 3-5 ans+ : structurer suffisamment tôt. Chaque bénéficiaire adulte : ~333 000 $ d'économie (ECGC 1 250 000 $). Exemple : 4 bénéficiaires = 5 000 000 $ d'ECGC combiné, économie ~1 330 000 $. Délai minimal de détention : 24 mois."},
-{per:'acc',r:4,id:'4.8',p:'b',n:1,t:'Philanthropie planifiée — dons stratégiques',d:"Pour HNWI/UHNWI : (1) don d'actions cotées appréciées directement à un organisme (aucun impôt sur le gain + crédit pour don = double avantage); (2) Fonds de dotation ou fonds bénévole; (3) don planifié par testament. Fréquemment sous-exploité dans les plans HNWI."},
-
-// ── ACCUMULATION T5 ──
-{per:'acc',r:5,id:'5.1',p:'b',n:0,t:'Modélisation des scénarios de retraite anticipée',d:"Modéliser les revenus disponibles selon différents âges (55, 58, 60, 65 ans) : capital accumulé projeté, besoins annuels nets, dépenses de transition, actifs à liquider et ordre optimal. L'arrêt anticipé comprime l'accumulation et allonge la période de décaissement."},
-{per:'acc',r:5,id:'5.2',p:'b',n:0,t:'Retraite partielle — analyse des impacts multiples',d:"Impact sur : (1) droits REER générés, (2) critère 5 500 heures (incorporés), (3) obligations RRI (cotisation minimale annuelle), (4) maintien des couvertures d'assurance collective. Recommander une réduction graduelle plutôt qu'un arrêt brutal."},
-{per:'acc',r:5,id:'5.3',p:'b',n:0,t:'Fonds de pension — analyse du timing optimal',d:"Calculer le break-even actuariel selon l'âge de demande. Comparer rente anticipée vs rente à l'âge normal. Coordonner avec les autres sources de revenus pour optimiser le taux marginal annuel. Vérifier les options de prestation réversible au conjoint."},
-{per:'acc',r:5,id:'5.4',p:'b',n:0,t:'RRQ — moment optimal de la demande',d:"Bonification de 0,6 %/mois entre 65 et 70 ans (+36 % à 70 vs 65 ans). Anticipation dès 60 ans : -0,5 %/mois (-30 % max). Pour HNWI avec autres revenus suffisants : reporter à 70 ans est généralement optimal."},
-{per:'acc',r:5,id:'5.5',p:'b',n:0,t:'Sécurité de la vieillesse — report et seuil de récupération',d:"Report après 65 ans : +0,6 %/mois jusqu'à 70 ans (+36 %). Seuil de récupération 2025 : 90 997 $ (15 cents/$). Structurer les décaissements pour rester sous le seuil si possible."},
-{per:'acc',r:5,id:'5.6',p:'i',n:0,t:'Ordre optimal de décaissement corporatif',d:"(1) CELI; (2) CDC — dividende en capital libre d'impôt; (3) IMRTD via dividende ordinaire; (4) REER/FERR — gestion du taux marginal; (5) dividende déterminé (~36,39 % QC); (6) RRQ + SV (reporter le plus possible); (7) liquidation des placements non enregistrés."},
-{per:'acc',r:5,id:'5.7',p:'i',n:1,t:'Dissolution ou restructuration corporative — planification préliminaire',d:"Si la société n'aura plus de raison d'être à la retraite : planifier dissolution progressive vs conversion en Holdco de détention. Analyser : disposition présumée, récupération DPA, dividendes de liquidation vs pipeline post-mortem."},
-{per:'acc',r:5,id:'5.8',p:'i',n:1,t:'Planification post-mortem préliminaire',d:"Documenter les stratégies au décès (pipeline post-mortem, ECGC résiduel, solde CDC, fiducie testamentaire qualifiée). Assurer la cohérence entre le testament, la convention d'actionnaires et la planification fiscale. Réviser avec le notaire-fiscaliste tous les 3-5 ans."},
-
-// ── TRANSITION T1 ──
-{per:'tra',r:1,id:'1.1',p:'b',n:0,t:'Révision du bilan patrimonial complet',d:"Dresser un inventaire actualisé de tous les actifs (REER, CELI, comptes corporatifs, immobilier, régimes de retraite) et passifs (hypothèques, dettes). Calculer la valeur nette globale et modéliser la trajectoire sur 5-10 ans. Ce bilan est le point de départ indispensable de toute planification de retraite."},
-{per:'tra',r:1,id:'1.2',p:'b',n:0,t:'Assurance invalidité — vérifier la date d\'expiration et planifier la transition',d:"La majorité des polices individuelles se terminent à 65 ans. Vérifier les dates d'expiration. Si la retraite est anticipée avant 65 ans : s'assurer que la couverture est maintenue jusqu'à l'arrêt complet de la pratique ou de l'activité rémunérée."},
-{per:'tra',r:1,id:'1.3',p:'b',n:0,t:'Assurance soins de longue durée — fenêtre d\'admissibilité',d:"Le coût d'une police de soins de longue durée augmente significativement avec l'âge. La fenêtre optimale est entre 55 et 65 ans. Évaluer les besoins estimés (3 000-7 000 $/mois selon le niveau de soins) et le mode de financement. L'admissibilité médicale se réduit avec le temps."},
-{per:'tra',r:1,id:'1.4',p:'b',n:0,t:'Assurance vie — réévaluer les besoins réels',d:"Les besoins évoluent : dettes réduites, enfants adultes et indépendants. Réévaluer si la couverture est excédentaire (coût sans bénéfice) ou insuffisante (gain latent sur actifs corporatifs, objectifs de transmission). Pour incorporés : valider la cohérence entre la CSS accumulée et les objectifs successoraux via le CDC."},
-{per:'tra',r:1,id:'1.5',p:'b',n:0,t:'Testament et mandat — révision obligatoire préretraite',d:"La transition vers la retraite modifie fondamentalement la situation patrimoniale. Révision obligatoire avec le notaire. Vérifier la désignation du liquidateur, les légataires particuliers, les clauses corporatives. Les documents doivent refléter la situation post-cessation des activités."},
-{per:'tra',r:1,id:'1.6',p:'i',n:0,t:'Convention d\'actionnaires — mise à jour valeur et couverture',d:"La JVM de l'entreprise a probablement augmenté. Mettre à jour le mécanisme d'évaluation et la couverture d'assurance vie croisée. Si la retraite implique le transfert des actions : prévoir les mécanismes de sortie et de rachat dans la convention."},
-{per:'tra',r:1,id:'1.7',p:'b',n:0,t:'Désignations de bénéficiaires — révision finale préretraite',d:"Révision systématique sur REER, FERR, CELI, polices, régimes de retraite. Valider la coordination avec le testament. Attention aux désignations «succession» à éviter sur les régimes enregistrés. Dernière opportunité de planification optimale avant la conversion REER → FERR."},
-
-// ── TRANSITION T2 ──
-{per:'tra',r:2,id:'2.1',p:'i',n:0,t:'Réduction progressive du salaire actif — impact multi-dimensionnel',d:"Planifier la réduction du salaire plusieurs années avant la retraite. Évaluer l'impact sur : (1) critère 5 500 heures (DPE QC), (2) cotisations minimales RRI, (3) droits REER générés, (4) cotisations RRQ futures. Une réduction trop rapide peut créer des contraintes fiscales non souhaitées."},
-{per:'tra',r:2,id:'2.2',p:'i',n:0,t:'Purification de la société — admissibilité ECGC si vente envisagée',d:"Si vente dans 24-36 mois : vérifier les tests APE (90 % d'actifs actifs au moment de la vente, 50 % sur les 24 mois précédents). Extraire les actifs excédentaires via : CDC en priorité, IMRTD via dividende, transfert vers Holdco (art. 85 LIR — délai 24 mois requis). Valider avec le fiscaliste."},
-{per:'tra',r:2,id:'2.3',p:'i',n:0,t:'Évaluation formelle de la valeur de l\'entreprise',d:"Si vente envisagée ou gel successoral : obtenir une évaluation indépendante de la JVM par un expert en évaluation d'entreprises. Nécessaire pour documenter le prix de base aux fins de l'ECGC, mettre à jour la convention d'actionnaires et structurer le gel successoral."},
-{per:'tra',r:2,id:'2.4',p:'i',n:0,t:'RRI — cotisations finales et options à la retraite',d:"Maximiser les dernières cotisations (avantage actuariel le plus élevé à l'approche de la retraite). Options disponibles à la retraite : (1) conversion en rente viagère (garantie à vie), (2) transfert au REER/FERR selon les limites actuarielles. Valider et planifier avec l'actuaire."},
-{per:'tra',r:2,id:'2.5',p:'i',n:0,t:'ECGC résiduel — maximiser avant la retraite ou la vente',d:"Vérifier le solde d'ECGC disponible de chaque actionnaire et bénéficiaire de fiducie. Planifier la distribution des actions de la fiducie aux bénéficiaires au moins 24 mois avant la vente (art. 107(2) LIR). Chaque bénéficiaire adulte peut utiliser son propre ECGC de 1 250 000 $."},
-{per:'tra',r:2,id:'2.6',p:'i',n:0,t:'Fiducie familiale — actions préalables à la vente ou à la dissolution',d:"Si la fiducie a plus de 18 ans : anticiper la règle des 21 ans (disposition présumée à la JVM au 21e anniversaire). Planifier la distribution des actions aux bénéficiaires avant ce délai. Si vente imminente : valider que le délai de détention de 24 mois est respecté."},
-{per:'tra',r:2,id:'2.7',p:'b',n:0,t:'Élimination des dettes personnelles avant la retraite',d:"Cibler l'entrée en retraite sans dettes à taux élevé. L'hypothèque résidentielle peut subsister si le taux est faible et que les actifs produisent un rendement supérieur après impôt. Calculer le solde optimal selon l'arbitrage taux/rendement propre à chaque client."},
-
-// ── TRANSITION T3 ──
-{per:'tra',r:3,id:'3.1',p:'b',n:0,t:'REER — maximiser les dernières années de cotisation',d:"Les années de revenu élevé avant la retraite représentent les meilleures opportunités de cotisation REER (taux marginal de 53,31 % QC). Utiliser tous les droits inutilisés. Rappel : la déduction peut être reportée si une année encore plus avantageuse est anticipée."},
-{per:'tra',r:3,id:'3.2',p:'b',n:0,t:'CELI — maximiser et repositionner vers le décaissement',d:"Maximiser les droits annuels. Commencer à repositionner le portefeuille CELI vers des actifs générateurs de revenus stables (dividendes, obligations) nécessaires au décaissement. Le CELI sera le premier véhicule de décaissement recommandé."},
-{per:'tra',r:3,id:'3.3',p:'b',n:0,t:'REEE — planifier le décaissement final',d:"Si des enfants sont encore aux études : planifier les derniers retraits PAE avant la fin des études. Si tous les enfants ont terminé : envisager le transfert au REER (max 50 000 $, droits requis) ou la dissolution selon les soldes restants."},
-{per:'tra',r:3,id:'3.4',p:'i',n:0,t:'CDC — distribuer prioritairement avant la retraite',d:"Planifier un ou plusieurs dividendes de capital dans les années précédant la retraite, en coordination avec le niveau de revenus annuels. Chaque dollar de CDC distribué sort libre d'impôt — opportunité souvent sous-exploitée en phase de transition."},
-{per:'tra',r:3,id:'3.5',p:'i',n:0,t:'IMRTD — récupération planifiée sur 3-5 ans',d:"Calculer le solde IMRTD total et établir un plan de récupération progressif via des dividendes imposables sur 3-5 ans. Coordonner avec le niveau de revenus pour éviter les paliers de taux. L'IMRTD non récupéré avant la cessation représente un coût d'opportunité permanent."},
-{per:'tra',r:3,id:'3.6',p:'i',n:0,t:'Placements corporatifs — repositionner vers le profil de décaissement',d:"Commencer à repositionner le portefeuille de la phase «accumulation-croissance» vers la phase «revenus-décaissement». Réduire les actifs à fort RPTA au profit d'actifs à flux de trésorerie prévisibles, en coordination avec la stratégie de décaissement globale."},
-
-// ── TRANSITION T4 ──
-{per:'tra',r:4,id:'4.1',p:'b',n:0,t:'Modéliser le revenu net souhaité à la retraite',d:"Établir un budget de retraite détaillé : (1) dépenses fixes (logement, assurances, taxes), (2) dépenses variables (voyages, loisirs), (3) dépenses ponctuelles (rénovations, aide aux enfants), (4) tampon d'inflation (~2,5-3 %/an sur 25-30 ans). Ce budget est le fondement de toute stratégie de décaissement."},
-{per:'tra',r:4,id:'4.2',p:'b',n:0,t:'Fenêtre fiscale de transition — exploiter les années à faible revenu',d:"La période entre la cessation des revenus actifs et le début des prestations gouvernementales est une fenêtre fiscale précieuse. Stratégies : conversions REER → FERR à taux réduit, réalisation de gains en capital à faible taux, cotisations CELI maximales."},
-{per:'tra',r:4,id:'4.3',p:'b',n:0,t:'RRQ — décision finale sur le timing',d:"Confirmer la stratégie : anticiper à 60 ans (-30 %), demander à 65 ans (base), reporter à 70 ans (+36 %). Obtenir le relevé de participations pour calculer la rente estimée. Pour HNWI avec autres revenus suffisants : reporter à 70 ans est généralement optimal."},
-{per:'tra',r:4,id:'4.4',p:'b',n:0,t:'SV — confirmer la stratégie de report',d:"Confirmer si le report jusqu'à 70 ans (+36 %) est pertinent selon les sources disponibles entre 65-70 ans. Calculer l'impact du seuil de récupération (90 997 $) sur les revenus projetés. Pour HNWI : souvent pertinent de reporter ET de gérer les revenus sous le seuil."},
-{per:'tra',r:4,id:'4.5',p:'b',n:0,t:'Fonds de pension — confirmer les options définitives',d:"Régimes PD : (1) rente viagère (prévisibilité, couverture du conjoint) vs (2) valeur de transfert au FERR (flexibilité, risque de marché). Calculer le break-even actuariel. Décision généralement irrévocable — analyse approfondie et actuaire indépendant recommandés."},
-{per:'tra',r:4,id:'4.6',p:'b',n:0,t:'Planifier la liquidité de transition',d:"Identifier les sources de liquidités disponibles entre la cessation et le début des prestations gouvernementales (souvent 2-10 ans). Maintenir 12-24 mois de dépenses en liquidités. Éviter de forcer des rachats à des moments défavorables de marché."},
-{per:'tra',r:4,id:'4.7',p:'e',n:0,t:'Options à la retraite du régime de retraite employeur',d:"Recenser toutes les options : (1) rente viagère avec ou sans facteur d'anticipation, (2) valeur de transfert au FERR, (3) rente différée. Évaluer l'impact de la prestation de conjoint survivant sur le montant mensuel. Décision souvent irrévocable — obtenir l'aide d'un actuaire indépendant."},
-
-// ── TRANSITION T5 ──
-{per:'tra',r:5,id:'5.1',p:'i',n:0,t:'Pipeline post-mortem — structurer et documenter avant le décès',d:"La stratégie doit être préparée avant le décès (les délais de la succession limitent la fenêtre d'action). S'assurer que la succession disposera des ressources liquides pour financer la Newco et que le notaire connaît la stratégie. Économie typique : 100 000-200 000 $ sur 1 M$ de valeur corporative."},
-{per:'tra',r:5,id:'5.2',p:'b',n:0,t:'Fiducie testamentaire qualifiée — analyser la pertinence',d:"Une FTQ établie par testament est imposée à des taux marginaux progressifs (vs taux forfaitaire pour les fiducies ordinaires). Avantage : les revenus générés peuvent être imposés à des taux inférieurs au taux du bénéficiaire. Particulièrement utile pour un bénéficiaire à revenu élevé ou ayant des besoins particuliers."},
-{per:'tra',r:5,id:'5.3',p:'b',n:0,t:'Don planifié — structurer avant la retraite',d:"Si objectifs philanthropiques : structurer les dons pendant que les revenus actifs sont encore élevés (crédits plus précieux au taux marginal de 53,31 %). Options : don d'actions cotées appréciées, rente de bienfaisance, legs testamentaire. Double avantage fiscal du don d'actions cotées appréciées."},
-{per:'tra',r:5,id:'5.4',p:'i',n:0,t:'Assurance vie corporative — adéquation finale et stratégie de sortie',d:"Vérifier que la couverture est cohérente avec la valeur successorale actuelle. Si la société sera dissoute : considérer le transfert de la police à l'actionnaire personnellement (analyser l'implication fiscale). Valider l'utilisation prévue du CDC généré au décès."},
-{per:'tra',r:5,id:'5.5',p:'b',n:0,t:'Transfert intergénérationnel — planification si entreprise familiale',d:"Si des enfants souhaitent reprendre l'entreprise : planifier selon les règles post-C208 (contrôle effectif pendant au moins 36 mois). Structurer le gel et l'utilisation de l'ECGC. Coordonner avec le plan de succession opérationnelle. Validation avec un fiscaliste en droit corporatif obligatoire."},
-
-// ── DÉCAISSEMENT T1 ──
-{per:'dec',r:1,id:'1.1',p:'b',n:0,t:'Établir et réviser annuellement le budget de retraite',d:"Documenter les dépenses courantes et réviser chaque année. Les dépenses évoluent selon trois phases : active (voyages, loisirs élevés), intermédiaire (dépenses stables), tardive (soins de santé, hébergement). Intégrer l'inflation et les dépenses extraordinaires. Base indispensable de toute décision de décaissement."},
-{per:'dec',r:1,id:'1.2',p:'b',n:0,t:'Cartographier toutes les sources de revenus disponibles',d:"Inventorier : FERR (minimums annuels), CELI, régimes de retraite (rentes), RRQ et SV (dates choisies), revenus de placements non enregistrés, dividendes corporatifs (CDC, ordinaires, déterminés). Calculer le revenu total disponible et imposable à chaque âge sur un horizon de 25-30 ans."},
-{per:'dec',r:1,id:'1.3',p:'b',n:0,t:"Établir et documenter l'ordre de décaissement optimal",d:"Ordre recommandé : (1) CELI — libre d'impôt, aucun impact sur les prestations; (2) CDC si incorporé; (3) revenus de placements non enregistrés à faible imposition; (4) FERR — gérer le taux marginal; (5) dividendes corporatifs restants; (6) RRQ + SV — reporter le plus possible. Documenter et réviser annuellement."},
-{per:'dec',r:1,id:'1.4',p:'b',n:0,t:'Conversion REER → FERR — timing et stratégie',d:"Obligatoire au 31 décembre de l'année des 71 ans. Possible avant si le taux marginal est plus faible maintenant qu'il ne le sera lors des retraits minimaux obligatoires. Option : utiliser l'âge du conjoint plus jeune pour réduire les retraits minimaux annuels."},
-{per:'dec',r:1,id:'1.5',p:'b',n:0,t:'Retraits FERR — planifier au-delà du minimum obligatoire',d:"Les retraits minimaux augmentent chaque année avec l'âge. Stratégie : retirer plus que le minimum en début de retraite si le taux marginal est encore faible, pour éviter un FERR trop important à 80+ ans (minimaux alors très élevés, impact sur SV et crédits)."},
-{per:'dec',r:1,id:'1.6',p:'b',n:0,t:'Fractionner le revenu de pension avec le conjoint',d:"Jusqu'à 50 % du revenu de pension admissible (incluant FERR après 65 ans, rentes de régimes PD/RRI) peut être attribué au conjoint. Réduit le taux marginal moyen du couple et aide à éviter la récupération de la SV pour les deux conjoints."},
-{per:'dec',r:1,id:'1.7',p:'b',n:0,t:'Maintenir une réserve de liquidités accessible',d:"Maintenir 12-24 mois de dépenses en liquidités (CELI, CPG rachetable, compte épargne). Évite les liquidations forcées d'actifs en période de baisse de marchés. La réserve est le filet de sécurité qui permet d'exécuter la stratégie de décaissement indépendamment des conditions de marché."},
-
-// ── DÉCAISSEMENT T2 ──
-{per:'dec',r:2,id:'2.1',p:'b',n:0,t:"Lisser le revenu imposable annuel — gérer les paliers de taux",d:"Établir un revenu imposable cible annuel en dessous d'un palier de taux identifié. Combler l'écart avec des retraits CELI (libres d'impôt) ou reporter des retraits selon la situation. La gestion proactive du taux marginal annuel peut représenter des économies de plusieurs milliers de dollars par année."},
-{per:'dec',r:2,id:'2.2',p:'b',n:0,t:"Gérer le seuil de récupération de la SV (90 997 $ en 2025)",d:"Surveiller annuellement le revenu imposable. Outils : CELI (retraits non imposables), fractionner avec le conjoint, ajuster les dividendes corporatifs. Impact maximal : récupération totale de la SV (~8 800 $/an). Cet objectif peut justifier une réorganisation significative des sources de revenus."},
-{per:'dec',r:2,id:'2.3',p:'b',n:0,t:'Cristallisation planifiée des gains en capital latents',d:"En années à faible revenu imposable : réaliser des gains en capital latents pour utiliser l'espace fiscal disponible. Ceci réduit le gain futur imposable au décès (disposition présumée). Coordonner avec la mise à jour du coût de base des actifs."},
-{per:'dec',r:2,id:'2.4',p:'b',n:0,t:'Pertes en capital — utilisation stratégique',d:"Les pertes en capital compensent uniquement des gains en capital. Identifier les positions perdantes et planifier leur réalisation pour compenser des gains réalisés (même année ou 3 années précédentes). Les pertes non utilisées à la retraite sont plus précieuses de son vivant."},
-{per:'dec',r:2,id:'2.5',p:'b',n:0,t:"Crédit pour revenu de pension — s'assurer de l'admissibilité",d:"Crédit fédéral sur les premiers 2 000 $ de revenu de pension admissible (rentes PD, RRI, FERR après 65 ans). Crédit QC équivalent. Si les seuls revenus sont des dividendes ou du RRQ : envisager de convertir une portion du FERR en rente viagère pour activer le crédit."},
-{per:'dec',r:2,id:'2.6',p:'b',n:0,t:'Révision fiscale proactive chaque automne (avant le 31 décembre)',d:"Chaque année en octobre-novembre : estimer le revenu imposable de l'année, identifier les actions à prendre avant le 31 décembre (retraits supplémentaires, dons, réalisation de pertes), ajuster le plan pour l'année suivante. Ne pas attendre la production de la déclaration en mars."},
-{per:'dec',r:2,id:'2.7',p:'i',n:0,t:'Décaissement corporatif — exécuter l\'ordre optimal chaque année',d:"Chaque année avec le comptable : (1) vérifier le solde CDC → distribuer en dividende de capital si disponible, (2) calculer l'IMRTD récupérable via dividende ordinaire, (3) ajuster selon le taux marginal personnel souhaité. Optimiser la combinaison CDC + dividendes ordinaires + déterminés annuellement."},
-
-// ── DÉCAISSEMENT T3 ──
-{per:'dec',r:3,id:'3.1',p:'b',n:0,t:'RRQ — confirmer la demande au moment choisi',d:"Valider la date de demande choisie lors de la planification de transition et confirmer avec Service Canada. Vérifier le montant estimé sur le relevé de participations. S'assurer de disposer de sources de revenus alternatives si demande après 65 ans."},
-{per:'dec',r:3,id:'3.2',p:'b',n:0,t:'SV — confirmer la demande et surveiller le revenu annuel',d:"Confirmer la date de demande. Une fois la SV reçue : surveiller le revenu imposable annuel vs le seuil de récupération (90 997 $ en 2025). La récupération est calculée sur la T1 et réclamée sous forme de retenues sur les paiements futurs."},
-{per:'dec',r:3,id:'3.3',p:'b',n:0,t:'Crédit en raison de l\'âge (65 ans+) — maximiser',d:"Crédit fédéral non remboursable de 8 396 $ et crédit QC équivalent. Se réduit progressivement si le revenu net dépasse ~44 000 $. Planifier les revenus pour maximiser ce crédit lorsque les revenus le permettent."},
-{per:'dec',r:3,id:'3.4',p:'b',n:0,t:'Supplément de revenu garanti (SRG) — vérifier si applicable',d:"Généralement non applicable pour HNWI. Toutefois, en cas d'années à très faible revenu imposable (ex. première année de retraite, avant conversion FERR) : vérifier brièvement l'admissibilité. Le SRG est non imposable et s'ajoute à la SV."},
-{per:'dec',r:3,id:'3.5',p:'b',n:0,t:'Allocation au conjoint survivant — planifier les implications',d:"Si le conjoint décède : réviser le budget de retraite en tenant compte d'un seul revenu. Valider que les désignations FERR, polices et régimes permettent le transfert optimal au conjoint survivant. Vérifier l'admissibilité à l'allocation au conjoint survivant selon l'âge et les revenus."},
-
-// ── DÉCAISSEMENT T4 ──
-{per:'dec',r:4,id:'4.1',p:'i',n:0,t:'Liquidation progressive vs maintien de la Holdco',d:"Évaluer si la Holdco doit être maintenue (actifs productifs importants), réduite progressivement (décaissement sur 10-20 ans), ou dissoute. Les coûts de maintien (~3 000-8 000 $/an) doivent être mis en regard des avantages fiscaux résiduels. La décision dépend des soldes CDC, IMRTD et de la structure familiale."},
-{per:'dec',r:4,id:'4.2',p:'i',n:0,t:'CDC — épuiser le solde en priorité absolue chaque année',d:"Vérifier annuellement le solde CDC disponible et distribuer en priorité avant tout autre type de dividende. C'est la source de revenus corporatifs la plus fiscalement efficace — chaque dollar de CDC est reçu libre d'impôt par l'actionnaire."},
-{per:'dec',r:4,id:'4.3',p:'i',n:0,t:'IMRTD — récupération finale planifiée',d:"Planifier la récupération complète de l'IMRTD avant la dissolution ou le décès. Chaque 1 $ de dividende ordinaire versé récupère 38,33 cents d'IMRTD. Coordonner avec le taux marginal personnel annuel pour optimiser le coût fiscal net de la récupération."},
-{per:'dec',r:4,id:'4.4',p:'i',n:0,t:'Pipeline post-mortem — valider la structure avec le notaire',d:"S'assurer que la stratégie est documentée, comprise par les héritiers et validée par le notaire et le fiscaliste. La structure (Newco, financement bancaire, remboursement succession) doit être exécutable rapidement après le décès. Économie typique : 100 000-200 000 $ sur 1 M$ de valeur corporative."},
-{per:'dec',r:4,id:'4.5',p:'i',n:0,t:'Règle des 21 ans (fiducie familiale) — surveiller les délais',d:"Si une fiducie familiale détient des actifs : vérifier la date du 21e anniversaire. Planifier la distribution aux bénéficiaires (art. 107(2) LIR) AVANT ce délai pour éviter la disposition présumée à la JVM et l'impôt sur les gains latents. Cette date ne doit jamais être manquée."},
-{per:'dec',r:4,id:'4.6',p:'i',n:0,t:'Dissolution formelle de la société — planification et timing',d:"Étapes : (1) distribuer tous les actifs dans l'ordre optimal (CDC, IMRTD, capital versé), (2) régler tous les impôts et obligations, (3) dissolution corporative formelle. L'ordre des distributions est crucial pour minimiser l'impôt total. Coordonner avec comptable et avocat."},
-
-// ── DÉCAISSEMENT T5 ──
-{per:'dec',r:5,id:'5.1',p:'b',n:0,t:'Testament — révision tous les 3 ans minimum',d:"La situation patrimoniale évolue rapidement en décaissement (actifs qui diminuent, valeurs qui changent, contexte familial qui évolue). Révision formelle avec le notaire tous les 3 ans ou après tout événement majeur. S'assurer que les legs correspondent aux actifs disponibles."},
-{per:'dec',r:5,id:'5.2',p:'b',n:0,t:'Désignations de bénéficiaires — révision annuelle',d:"Vérifier annuellement les désignations sur tous les contrats (FERR, polices, régimes). Adapter après un décès, un divorce, une naissance. Rappel : la désignation sur le contrat prime sur le testament. Un FERR avec désignation «succession» perd les avantages du transfert direct."},
-{per:'dec',r:5,id:'5.3',p:'b',n:0,t:'Don de son vivant vs legs testamentaire — analyse fiscale',d:"Don de son vivant : voir l'impact de son geste, réduire la valeur successorale, mais perd la flexibilité. Le don d'actifs appréciés peut déclencher un gain en capital; le legs au décès aussi (disposition présumée). Analyser selon les actifs concernés et les intentions."},
-{per:'dec',r:5,id:'5.4',p:'b',n:0,t:'Don d\'actifs appréciés à un organisme de bienfaisance',d:"Don d'actions cotées appréciées directement : aucun impôt sur le gain + crédit d'impôt pour don = double avantage supérieur à la vente puis au don en espèces. La valeur du don = valeur marchande au moment du transfert. Pertinent si actifs à plus-value latente et objectifs philanthropiques."},
-{per:'dec',r:5,id:'5.5',p:'b',n:0,t:'Planification des soins de longue durée — financement',d:"Évaluer les ressources disponibles pour les soins de longue durée (3 000-7 000 $/mois selon le niveau). Options de financement : police de soins de longue durée, liquidation d'actifs, revenus de placement. Intégrer dans le plan de décaissement et le budget de retraite tardive."},
-{per:'dec',r:5,id:'5.6',p:'b',n:0,t:'Fiducie testamentaire qualifiée — bénéfices fiscaux',d:"Une FTQ est imposée à des taux marginaux progressifs (vs taux forfaitaire de 53,31 % pour les fiducies ordinaires). Avantage : les revenus accumulés peuvent être imposés à des taux inférieurs. Doit être prévue dans le testament. Utile pour un bénéficiaire à revenu élevé ou handicapé."},
-{per:'dec',r:5,id:'5.7',p:'i',n:0,t:'Transfert intergénérationnel — si non complété en phase d\'accumulation',d:"Dernière opportunité d'utiliser les règles C-208 pour un transfert à un enfant (contrôle effectif pendant 36 mois). Éviter d'attendre le décès qui déclencherait une disposition présumée sans les mêmes avantages. Validation avec fiscaliste en droit corporatif obligatoire."},
+{per:"acc",r:1,id:"1.1",p:"b",n:1,t:"Fonds d'urgence",d:"Vérifier la présence de 3 à 6 mois de dépenses courantes en liquidités accessibles. Véhicules : compte épargne à intérêt élevé, CPG rachetable, marge de crédit préautorisée. L'absence de fonds d'urgence force souvent des rachats prématurés d'actifs enregistrés, déclenchant une imposition non planifiée.",ct:"Nous recommandons de constituer un fonds d'urgence représentant 3 à 6 mois de vos dépenses courantes, conservé dans un compte facilement accessible. Cette réserve vous protège contre les imprévus de la vie — perte temporaire de revenus, dépense inattendue — sans que vous deviez puiser dans vos placements à long terme à un mauvais moment."},
+{per:"acc",r:1,id:"1.2",p:"b",n:1,t:"Assurance invalidité — couverture et clauses clés",d:"Valider : (1) couverture cible 60-70 % du revenu brut, (2) définition «propre occupation», (3) durée des prestations jusqu'à 65 ans, (4) délai de carence, (5) indexation. Vérifier que la couverture suit la croissance des revenus.",ct:"Nous recommandons de revoir votre couverture d'assurance invalidité. En cas d'incapacité de travailler, cette protection remplace une portion importante de votre revenu et assure la continuité de votre plan financier. Nous avons identifié certains aspects à optimiser ou à valider dans votre situation."},
+{per:"acc",r:1,id:"1.3",p:"i",n:1,t:"Assurance invalidité — arbitrage perso vs corporatif",d:"Primes personnelles → prestations libres d'impôt; primes déduites en société → prestations imposables. Valeur nette de 100 000 $ libre d'impôt ≈ 191 000 $ de prestation imposable au taux de 53,31 % (QC).",ct:"Nous recommandons d'analyser attentivement la façon dont votre assurance invalidité est structurée. Selon que les primes sont payées personnellement ou par votre société, le traitement fiscal des prestations reçues en cas de sinistre est très différent — ce qui peut avoir une incidence significative sur votre revenu net réel en cas d'invalidité."},
+{per:"acc",r:1,id:"1.4",p:"b",n:1,t:"Assurance vie — besoin, structure et mode de détention",d:"Évaluer : (1) besoin réel (dettes, remplacement de revenus, disposition présumée), (2) temporaire vs permanente, (3) personnelle vs corporative (le produit excédant le CBR alimente le CDC au décès).",ct:"Nous recommandons de revoir votre couverture d'assurance vie afin de nous assurer qu'elle correspond à vos besoins actuels et à vos objectifs de transmission. Le bon montant et la bonne structure de détention peuvent protéger vos proches tout en offrant des avantages fiscaux importants au moment de votre décès."},
+{per:"acc",r:1,id:"1.5",p:"b",n:1,t:"Assurance maladie grave",d:"Évaluer si absence de régime collectif. Pour incorporés : détention corporative avec option ROP. Pour professionnels libéraux : complément essentiel à l'invalidité.",ct:"Nous recommandons d'évaluer la pertinence d'une assurance maladie grave. En cas de diagnostic d'une maladie grave — cancer, infarctus, AVC, entre autres — cette protection vous verse un montant forfaitaire libre d'impôt qui vous permet de maintenir votre train de vie le temps de votre rétablissement."},
+{per:"acc",r:1,id:"1.6",p:"b",n:1,t:"Arbitrage remboursement de dettes vs investissement",d:"Comparer le taux effectif après impôt des dettes avec le rendement attendu net d'impôt. L'analyse chiffrée s'impose car le biais psychologique oriente souvent vers une décision sous-optimale.",ct:"Nous recommandons d'analyser s'il est plus avantageux dans votre situation de rembourser vos dettes en priorité ou d'investir. La réponse dépend des taux d'intérêt de vos dettes et du rendement attendu de vos placements — une analyse chiffrée personnalisée s'impose pour prendre la meilleure décision."},
+{per:"acc",r:1,id:"1.7",p:"b",n:1,t:"Testament — présence, date et adéquation",d:"Vérifier : révision tous les 3-5 ans ou après tout changement de vie, liquidateur désigné et alternatif, cohérence avec les objectifs patrimoniaux, coordination avec la convention d'actionnaires.",ct:"Nous recommandons de revoir votre testament pour vous assurer qu'il reflète fidèlement vos intentions actuelles. Un testament à jour garantit que vos biens seront distribués selon vos volontés et facilite grandement la tâche de vos proches au moment du règlement de votre succession."},
+{per:"acc",r:1,id:"1.8",p:"b",n:1,t:"Mandat d'inaptitude — présence et portée des pouvoirs",d:"Recommander des pouvoirs étendus incluant la gestion des placements et la disposition d'actifs. Pour les incorporés : s'assurer que le mandataire peut agir à titre de directeur ou d'actionnaire.",ct:"Nous recommandons de mettre en place ou de mettre à jour votre mandat d'inaptitude. Ce document désigne la personne qui prendra les décisions en votre nom si vous devenez temporairement ou définitivement incapable de le faire — notamment pour la gestion de vos finances, de vos placements et de vos affaires."},
+{per:"acc",r:1,id:"1.9",p:"b",n:1,t:"Désignations de bénéficiaires — à jour et cohérentes",d:"Vérifier les désignations sur REER, FERR, CELI, polices, régimes de retraite. Éviter la désignation «succession». La désignation sur le contrat prime sur le testament.",ct:"Nous recommandons de revoir les désignations de bénéficiaires sur vos comptes et polices d'assurance. Une désignation à jour assure que ces actifs sont transmis directement à la personne souhaitée, sans délais ni frais juridiques, et dans l'ordre prévu par votre plan successoral."},
+{per:"acc",r:1,id:"1.10",p:"i",n:1,t:"Convention d'actionnaires — présence et adéquation",d:"Vérifier : existence, clause buy-sell financée par assurance vie croisée, mécanisme d'évaluation de la JVM, clauses de sortie, adéquation de la couverture avec la valeur actuelle.",ct:"Nous recommandons de revoir votre convention d'actionnaires. Ce document encadre ce qui se passe en cas de décès, d'invalidité ou de départ d'un actionnaire — il protège la valeur que vous avez bâtie et prévient les conflits qui pourraient nuire à la continuité de votre entreprise."},
+{per:"acc",r:2,id:"2.1",p:"i",n:0,t:"Structure corporative — Opco seule ou Opco + Holdco?",d:"Évaluer la Holdco si surplus annuels > ~50 000 $. Avantages : protection d'actifs, préservation de la DPE, planification successorale. Coût additionnel : ~3 000-8 000 $/an.",ct:"Nous recommandons d'évaluer la mise en place d'une société de gestion en parallèle à votre société professionnelle. Cette structure permet de protéger les surplus que vous accumulez des créanciers éventuels et d'optimiser votre stratégie fiscale et successorale à long terme."},
+{per:"acc",r:2,id:"2.2",p:"i",n:0,t:"Mix salaire/dividendes — calcul du niveau optimal",d:"Calculer le salaire pour : droits REER, critère 5 500 heures (DPE QC), cotisations RRQ. L'excédent en dividendes. Valider annuellement avant la clôture.",ct:"Nous recommandons d'optimiser la combinaison entre le salaire et les dividendes que vous vous versez de votre société. Ce calibrage a un impact direct sur votre impôt personnel, vos droits de cotisation REER et vos cotisations au Régime de rentes du Québec."},
+{per:"acc",r:2,id:"2.3",p:"i",n:1,t:"Critère des 5 500 heures — admissibilité DPE québécoise",d:"Le taux provincial réduit de 3,2 % est conditionnel à 5 500 heures rémunérées annuellement. Coût potentiel : 41 500 $/an sur 500 000 $ de revenu actif si critère non satisfait.",ct:"Nous recommandons de valider que votre société respecte le critère des 5 500 heures de travail rémunéré. Ce seuil est nécessaire pour conserver le taux d'imposition réduit au Québec, ce qui représente une économie annuelle pouvant atteindre 41 500 $ sur vos revenus d'entreprise."},
+{per:"acc",r:2,id:"2.4",p:"i",n:0,t:"Revenus passifs — identifier la zone DPE actuelle et projetée",d:"Zone verte (≤ 50 000 $) : DPE intacte. Zone orange (50-150k$) : surcoût jusqu'à 35 750 $/an. Zone rouge (≥ 150 000 $) : DPE éliminée, surcoût 71 500 $/an.",ct:"Nous recommandons de surveiller le niveau de revenus de placement générés par vos avoirs corporatifs. Au-delà d'un certain seuil, ces revenus réduisent progressivement votre accès au taux d'imposition réduit sur vos revenus d'entreprise — une planification active peut éviter un coût annuel pouvant atteindre 71 500 $."},
+{per:"acc",r:2,id:"2.5",p:"i",n:0,t:"Transfert Opco → Holdco avant la clôture",d:"Planifier les dividendes intersociétés (art. 112 LIR) avant la fin de l'exercice. Réduit le revenu passif de l'Opco et préserve sa DPE.",ct:"Nous recommandons de planifier le transfert des surplus de votre société professionnelle vers votre société de gestion avant la fin de l'exercice financier. Cette opération protège vos avoirs accumulés et préserve vos avantages fiscaux sur vos revenus d'entreprise pour l'année suivante."},
+{per:"acc",r:2,id:"2.6",p:"i",n:1,t:"Revenu de prestation de services personnels — évaluer le risque",d:"Si services fournis essentiellement à un seul client/établissement : risque de requalification (art. 125(7) LIR), perte de la DPE.",ct:"Nous recommandons de valider que la structure de votre société est conforme aux exigences fiscales. Dans certaines circonstances, si vous fournissez vos services principalement à un seul établissement, les autorités fiscales pourraient remettre en question vos avantages corporatifs — une validation préventive est indiquée."},
+{per:"acc",r:2,id:"2.7",p:"e",n:1,t:"Régime de retraite employeur — maximiser la contribution patronale",d:"Cotiser au moins jusqu'au plafond de la contribution patronale. Rendement immédiat de 50-100 % sur la mise.",ct:"Nous recommandons de cotiser au régime de retraite offert par votre employeur, au minimum jusqu'au plafond de la contribution patronale. La contribution de votre employeur représente un rendement immédiat garanti — c'est l'équivalent d'une augmentation de salaire directement investie pour votre retraite."},
+{per:"acc",r:2,id:"2.8",p:"e",n:1,t:"Facteur d'équivalence — impact réel sur les droits REER",d:"Vérifier le FE sur le T4 et les droits REER réels via Mon dossier ARC.",ct:"Nous recommandons de vérifier l'impact de votre régime de retraite d'employeur sur vos droits de cotisation REER. Participer à un régime de retraite au travail réduit les cotisations que vous pouvez faire à votre REER — il est important de connaître vos droits réels pour planifier adéquatement."},
+{per:"acc",r:2,id:"2.9",p:"e",n:1,t:"Options d'achat / régime d'actionnariat — stratégie d'exercice",d:"Analyser : délai de détention optimal, moment d'exercice, couverture du risque de concentration, coordination avec la cotisation REER.",ct:"Nous recommandons d'établir une stratégie pour vos options d'achat d'actions ou votre participation au régime d'actionnariat. Le moment où vous exercez ces droits et la durée de détention ont une incidence directe sur votre charge fiscale — une planification adéquate peut faire une différence significative."},
+{per:"acc",r:2,id:"2.10",p:"e",n:1,t:"Avantages imposables — recenser et optimiser",d:"Recenser tous les avantages imposables et évaluer si leur structure est optimale. Certains peuvent être restructurés.",ct:"Nous recommandons de faire l'inventaire de vos avantages imposables — véhicule de fonction, prêts préférentiels, assurances collectives, entre autres — et d'évaluer si leur structure est optimale. Certains avantages peuvent être restructurés pour réduire votre charge fiscale annuelle."},
+{per:"acc",r:3,id:"3.1",p:"b",n:0,t:"CELI — maximisation et stratégie de placements",d:"Vérifier les droits cumulatifs. Favoriser les placements à fort potentiel de croissance (gain en capital 100 % exempt). Ne jamais surcotiser (pénalité 1 %/mois).",ct:"Nous recommandons de maximiser votre Compte d'épargne libre d'impôt (CELI). Les revenus et gains générés dans ce compte ne sont jamais imposés, et les retraits sont entièrement libres d'impôt. À la retraite, le CELI est particulièrement précieux car ses retraits n'affectent pas vos prestations gouvernementales."},
+{per:"acc",r:3,id:"3.2",p:"b",n:0,t:"REER — niveau de cotisation optimal",d:"L'avantage réel est l'écart entre le taux marginal actuel et le taux anticipé à la retraite. Tenir compte des droits inutilisés et du FE.",ct:"Nous recommandons d'établir le niveau optimal de cotisation à votre REER. Chaque dollar cotisé vous génère une déduction fiscale immédiate et vos placements croissent à l'abri de l'impôt. Le montant idéal dépend de votre situation globale et de l'écart entre votre taux d'imposition actuel et futur."},
+{per:"acc",r:3,id:"3.3",p:"b",n:0,t:"REER — report stratégique de la déduction",d:"La cotisation et la déduction sont deux opérations indépendantes. Cotiser maintenant mais reporter la déduction à une année à taux marginal plus élevé.",ct:"Nous recommandons d'envisager le report de la déduction de vos cotisations REER à une année où votre revenu sera plus élevé. Vous pouvez cotiser maintenant pour que vos placements commencent à croître à l'abri de l'impôt, tout en conservant la déduction fiscale pour un moment plus avantageux."},
+{per:"acc",r:3,id:"3.4",p:"b",n:0,t:"REER conjoint — fractionnement du revenu à la retraite",d:"Cotisations déductibles par le cotisant, imposées chez le bénéficiaire. Règle d'attribution : 3 ans entre la dernière cotisation et le retrait.",ct:"Nous recommandons d'envisager des cotisations au REER de votre conjoint. Cette stratégie permet de diviser les revenus imposables à la retraite entre vous deux, ce qui peut réduire significativement votre facture fiscale globale lorsque viendra le temps de décaisser."},
+{per:"acc",r:3,id:"3.5",p:"b",n:0,t:"REEE — cotiser jusqu'au maximum de subvention annuel",d:"2 500 $/enfant/an pour maximiser la SCEE fédérale (500 $) et l'IQEE québécoise (250 $) — rendement garanti de 30 %. Si droits inutilisés : rattrapage possible de 5 000 $/an.",ct:"Nous recommandons de cotiser au Régime enregistré d'épargne-études de vos enfants, au minimum jusqu'au montant donnant droit aux subventions gouvernementales. Le gouvernement vous offre une subvention automatique de 30 % sur votre cotisation annuelle — un rendement garanti sans risque à ne pas laisser sur la table."},
+{per:"acc",r:3,id:"3.6",p:"i",n:0,t:"Placements corporatifs — composition pour minimiser le RPTA",d:"Favoriser : actions croissance, actions canadiennes à dividendes (RPTA=0), assurance vie CSV. Limiter : CPG, obligations, fonds distributeurs.",ct:"Nous recommandons d'optimiser la composition de vos placements détenus dans votre société. Selon le type de revenus qu'ils génèrent, certains placements ont moins d'impact que d'autres sur votre taux d'imposition corporatif — un portefeuille bien structuré peut vous faire économiser des dizaines de milliers de dollars annuellement."},
+{per:"acc",r:3,id:"3.7",p:"i",n:0,t:"CDC — solde disponible et dividende en capital prioritaire",d:"Si solde CDC positif : distribuer en priorité absolue avant tout autre dividende — distribution libre d'impôt souvent sous-exploitée.",ct:"Nous recommandons de vérifier s'il existe un solde disponible dans le compte de dividende en capital de votre société. Si c'est le cas, ces sommes peuvent vous être versées entièrement libres d'impôt — une opportunité souvent sous-utilisée qui devrait être saisie en priorité."},
+{per:"acc",r:3,id:"3.8",p:"i",n:0,t:"IMRTD — planifier la récupération de l'impôt remboursable",d:"Taux de remboursement : 38,33 % des dividendes imposables versés. L'IMRTD non récupéré est un coût d'opportunité réel.",ct:"Nous recommandons de planifier la récupération de l'impôt remboursable accumulé dans votre société. Une portion de l'impôt payé sur vos revenus de placement corporatifs vous est remise progressivement lorsque vous versez des dividendes — cet impôt déjà payé devrait être récupéré systématiquement."},
+{per:"acc",r:3,id:"3.9",p:"i",n:0,t:"Assurance vie corporative — accumulation hors RPTA et transmission",d:"Double avantage : croissance CSV hors RPTA; au décès, produit excédant le CBR alimente le CDC → dividende libre d'impôt.",ct:"Nous recommandons d'envisager de détenir une police d'assurance vie permanente dans votre société. La croissance de cette police n'est pas soumise aux règles sur les revenus passifs, et au décès, le produit d'assurance peut être reçu en grande partie libre d'impôt par vos héritiers — en faisant l'outil de transmission le plus efficace disponible."},
+{per:"acc",r:3,id:"3.10",p:"i",n:0,t:"RRI — évaluer la pertinence dès 45 ans",d:"À partir de ~45 ans, cotisations RRI > plafond REER (ex. 50 ans : ~62 000 $ vs 32 490 $). Requis : salaire T4, ~250 000 $ en REER. Frais annuels ~3 000-5 000 $.",ct:"Nous recommandons d'évaluer la pertinence d'un Régime de retraite individuel (RRI). Ce régime, établi spécifiquement pour vous, permet à votre société de cotiser pour votre retraite des montants nettement plus élevés que le plafond du REER — tout en bénéficiant d'une déduction fiscale complète pour la société."},
+{per:"acc",r:3,id:"3.11",p:"b",n:1,t:"Prêt au taux prescrit — fractionnement de revenus entre conjoints",d:"Si écart de taux marginal entre conjoints : prêt au taux prescrit de l'ARC au conjoint à revenu faible. Taux payable avant le 30 janvier de chaque année.",ct:"Nous recommandons d'explorer la stratégie du prêt au taux prescrit si vous et votre conjoint n'êtes pas au même taux d'imposition. En prêtant des sommes à votre conjoint à un taux fixé par l'Agence du revenu du Canada, les revenus générés sont imposés à son taux plus faible — réduisant la charge fiscale totale de votre ménage."},
+{per:"acc",r:3,id:"3.12",p:"b",n:1,t:"Placements non enregistrés — structure de détention efficace",d:"Détenir les placements générant des revenus récurrents au nom du conjoint à taux marginal plus bas. Attention aux règles d'attribution (art. 74.1 LIR).",ct:"Nous recommandons de revoir la façon dont vos placements non enregistrés sont détenus au sein de votre ménage. Selon les revenus de chaque conjoint, certaines structures de détention permettent de réduire l'impôt payé sur les revenus de placement, tout en respectant les règles fiscales en vigueur."},
+{per:"acc",r:3,id:"3.13",p:"b",n:1,t:"Manœuvre Smith — crédit levier sur l'hypothèque résidentielle",d:"Convertir progressivement l'intérêt hypothécaire non déductible en intérêt déductible sur placement. Analyse obligatoire du profil de risque.",ct:"Nous recommandons d'évaluer la Manœuvre Smith dans votre situation. Cette stratégie permet de convertir progressivement votre intérêt hypothécaire — qui n'est pas déductible d'impôt — en intérêt déductible, tout en investissant pour la croissance de votre patrimoine. Elle comporte un niveau de risque qui doit correspondre à votre profil."},
+{per:"acc",r:4,id:"4.1",p:"b",n:0,t:"Décaissement du REEE — optimisation des PAE",d:"Les PAE sont imposables chez l'étudiant. Stratégie : retirer les cotisations d'abord (libres d'impôt), calibrer les PAE selon le revenu étudiant.",ct:"Nous recommandons de planifier soigneusement le décaissement de votre REEE. La façon dont les retraits sont effectués influence l'impôt payé par votre enfant — une bonne planification permet de retirer la majeure partie des sommes accumulées à très faible taux d'imposition, voire en franchise d'impôt."},
+{per:"acc",r:4,id:"4.2",p:"b",n:0,t:"Changement de véhicule — analyse de la structure optimale",d:"Analyser : % d'usage professionnel, avantage imposable si usage personnel en société, plafond DPA Cat. 10A 36 000 $+taxes (2025), bail vs achat, journal de bord.",ct:"Nous recommandons d'analyser la structure optimale pour l'acquisition de votre prochain véhicule. Selon votre utilisation professionnelle et votre situation, différentes options — achat personnel, achat par la société, ou location — peuvent s'avérer plus avantageuses l'une que l'autre après impôt."},
+{per:"acc",r:4,id:"4.3",p:"b",n:0,t:"Achat d'une résidence secondaire (chalet, condo, etc.)",d:"(1) Mode de détention; (2) désignation résidence principale (règle du +1); (3) si locatif : déductibilité, récupération DPA, changement d'usage.",ct:"Nous recommandons d'analyser attentivement la façon dont une résidence secondaire sera détenue. Le mode de détention — à titre personnel, en société ou en fiducie — a une incidence directe sur le traitement fiscal du gain éventuel à la revente et sur la planification de votre succession."},
+{per:"acc",r:4,id:"4.4",p:"b",n:1,t:"Rémunération variable et bonus — timing fiscal optimal",d:"Pour salariés : cotiser au REER l'année de réception du bonus. Pour incorporés : choisir l'exercice fiscal optimal.",ct:"Nous recommandons de planifier le timing de vos primes et de votre rémunération variable. Coordonner la réception de ces revenus avec votre stratégie de cotisation REER ou la structure de rémunération de votre société peut réduire considérablement l'impôt payé sur ces sommes."},
+{per:"acc",r:4,id:"4.5",p:"b",n:1,t:"Enfant ou bénéficiaire handicapé — REEI et protections spécifiques",d:"Si admissible au CIPH (T2201) : REEI — Bon (jusqu'à 20 000 $) + Subvention (jusqu'à 70 000 $). Fiducie Henson pour préserver l'admissibilité aux prestations sociales.",ct:"Nous recommandons d'ouvrir un Régime enregistré d'épargne-invalidité (REEI) pour le bénéficiaire admissible. Le gouvernement peut contribuer jusqu'à 90 000 $ en subventions et bons directement dans ce régime — une aide financière substantielle pour assurer la sécurité financière à long terme de la personne concernée."},
+{per:"acc",r:4,id:"4.6",p:"i",n:1,t:"Gel successoral préliminaire — évaluer la pertinence",d:"Si l'entreprise a une valeur significative et les enfants approchent de l'âge adulte : gel (art. 86 LIR) pour cristalliser la JVM actuelle. Délai minimal 24 mois avant vente.",ct:"Nous recommandons d'évaluer la mise en place d'un gel successoral pour votre entreprise. Cette stratégie permet de cristalliser la valeur actuelle de votre société à des fins fiscales et de transférer toute la croissance future à vos successeurs — limitant ainsi votre impôt éventuel tout en permettant à votre famille de bénéficier davantage de la croissance."},
+{per:"acc",r:4,id:"4.7",p:"i",n:1,t:"Fiducie familiale — multiplication de l'ECGC",d:"Si vente envisagée dans 3-5 ans+ : structurer suffisamment tôt. Chaque bénéficiaire adulte peut utiliser son propre ECGC de 1 250 000 $. Délai minimal : 24 mois.",ct:"Nous recommandons d'envisager la mise en place d'une fiducie familiale en vue d'une éventuelle vente d'entreprise. Cette structure peut permettre à plusieurs membres de votre famille de bénéficier chacun d'une exonération fiscale personnelle importante lors de la vente — représentant une économie d'impôt potentiellement très significative."},
+{per:"acc",r:4,id:"4.8",p:"b",n:1,t:"Philanthropie planifiée — dons stratégiques",d:"Pour HNWI/UHNWI : don d'actions cotées appréciées directement à un organisme (aucun impôt sur le gain + crédit pour don = double avantage). Fonds de dotation ou legs testamentaire.",ct:"Nous recommandons d'intégrer vos objectifs philanthropiques à votre planification financière. Certaines stratégies de dons planifiés — notamment le don d'actions cotées dont la valeur a augmenté — offrent un double avantage fiscal important et permettent de rendre votre geste philanthropique nettement plus impactant."},
+{per:"acc",r:5,id:"5.1",p:"b",n:0,t:"Modélisation des scénarios de retraite anticipée",d:"Modéliser les revenus disponibles selon différents âges (55, 58, 60, 65 ans) : capital accumulé projeté, besoins annuels nets, actifs à liquider et ordre optimal.",ct:"Nous recommandons de modéliser différents scénarios de retraite selon l'âge auquel vous envisagez de cesser de travailler. Cette analyse vous permettra de visualiser concrètement vos revenus disponibles dans chaque scénario et de prendre une décision éclairée en pleine connaissance des impacts financiers à long terme."},
+{per:"acc",r:5,id:"5.2",p:"b",n:0,t:"Retraite partielle — analyse des impacts multiples",d:"Impact sur : droits REER, critère 5 500 heures (incorporés), obligations RRI, maintien des assurances collectives.",ct:"Nous recommandons d'analyser les impacts d'une retraite partielle avant l'arrêt complet de vos activités. Une réduction graduelle du travail peut être une transition plus avantageuse que l'arrêt brutal, notamment pour maintenir certaines protections et préserver des avantages fiscaux importants."},
+{per:"acc",r:5,id:"5.3",p:"b",n:0,t:"Fonds de pension — analyse du timing optimal",d:"Calculer le break-even actuariel selon l'âge de demande. Coordonner avec les autres sources de revenus pour optimiser le taux marginal annuel.",ct:"Nous recommandons de calculer le meilleur moment pour commencer à recevoir votre fonds de pension. Selon votre âge, vos autres sources de revenus et votre espérance de vie, il peut être nettement plus avantageux de demander votre rente plus tôt ou de la reporter — une analyse personnalisée s'impose."},
+{per:"acc",r:5,id:"5.4",p:"b",n:0,t:"RRQ — moment optimal de la demande",d:"Bonification de 0,6 %/mois entre 65 et 70 ans (+36 % à 70 vs 65 ans). Anticipation dès 60 ans : -0,5 %/mois (-30 % max).",ct:"Nous recommandons de planifier soigneusement le moment où vous demanderez votre Rente du Régime de rentes du Québec. Reporter la demande après 65 ans augmente votre rente mensuelle de façon permanente — une décision qui peut valoir plusieurs dizaines de milliers de dollars sur la durée de votre retraite."},
+{per:"acc",r:5,id:"5.5",p:"b",n:0,t:"Sécurité de la vieillesse — report et seuil de récupération",d:"Report après 65 ans : +0,6 %/mois jusqu'à 70 ans (+36 %). Seuil de récupération 2025 : 90 997 $ (15 cents/$).",ct:"Nous recommandons d'analyser le moment optimal pour demander votre pension de la Sécurité de la vieillesse. Reporter la demande peut augmenter vos paiements mensuels de façon permanente, et une bonne planification de vos autres revenus peut également vous permettre d'éviter la récupération partielle de cette prestation."},
+{per:"acc",r:5,id:"5.6",p:"i",n:0,t:"Ordre optimal de décaissement corporatif",d:"Ordre : (1) CELI; (2) CDC; (3) IMRTD via dividende ordinaire; (4) REER/FERR; (5) dividende déterminé; (6) RRQ+SV; (7) placements non enregistrés.",ct:"Nous recommandons d'établir un plan de décaissement de vos avoirs corporatifs pour la retraite. L'ordre dans lequel vous retirez vos fonds a une incidence directe sur le montant total d'impôt que vous paierez au cours de votre retraite — une planification rigoureuse peut représenter des économies substantielles."},
+{per:"acc",r:5,id:"5.7",p:"i",n:1,t:"Dissolution ou restructuration corporative — planification préliminaire",d:"Si la société n'aura plus de raison d'être à la retraite : planifier dissolution progressive vs conversion en Holdco de détention.",ct:"Nous recommandons de planifier à l'avance la dissolution ou la transformation de votre société lorsqu'elle ne sera plus nécessaire. Une dissolution non planifiée peut entraîner une facture fiscale importante — une stratégie réfléchie peut réduire significativement ces coûts au bénéfice de votre succession."},
+{per:"acc",r:5,id:"5.8",p:"i",n:1,t:"Planification post-mortem préliminaire",d:"Documenter les stratégies au décès (pipeline post-mortem, ECGC résiduel, solde CDC, fiducie testamentaire qualifiée).",ct:"Nous recommandons de planifier dès maintenant les stratégies qui s'appliqueront à votre patrimoine corporatif à votre décès. Une bonne préparation peut permettre à vos héritiers d'éviter une double imposition et d'optimiser la transmission des actifs que vous avez accumulés dans votre société."},
+{per:"tra",r:1,id:"1.1",p:"b",n:0,t:"Révision du bilan patrimonial complet",d:"Dresser un inventaire actualisé de tous les actifs (REER, CELI, comptes corporatifs, immobilier, régimes de retraite) et passifs. Calculer la valeur nette et modéliser la trajectoire sur 5-10 ans.",ct:"Nous recommandons d'effectuer un bilan patrimonial complet à l'approche de la retraite. Cet exercice dresse un portrait précis de l'ensemble de vos actifs et de vos obligations financières, et vous permet de savoir exactement où vous en êtes — et ce qu'il reste à faire pour atteindre vos objectifs."},
+{per:"tra",r:1,id:"1.2",p:"b",n:0,t:"Assurance invalidité — vérifier la date d'expiration",d:"La majorité des polices individuelles se terminent à 65 ans. Si la retraite est anticipée : s'assurer que la couverture est maintenue jusqu'à l'arrêt de la pratique.",ct:"Nous recommandons de vérifier la date d'échéance de votre couverture d'assurance invalidité. La majorité des polices se terminent à 65 ans — il est important de s'assurer que vous êtes protégé jusqu'à votre retraite effective, surtout si vous prévoyez cesser de travailler avant cet âge."},
+{per:"tra",r:1,id:"1.3",p:"b",n:0,t:"Assurance soins de longue durée — fenêtre d'admissibilité",d:"Fenêtre optimale entre 55 et 65 ans. Évaluer les besoins estimés (3 000-7 000 $/mois) et le mode de financement.",ct:"Nous recommandons d'évaluer la souscription d'une assurance soins de longue durée avant votre retraite. Les coûts de soins spécialisés — aide à domicile, résidence pour aînés — peuvent représenter plusieurs milliers de dollars par mois. Souscrire maintenant, avant 65 ans, est nettement plus avantageux qu'attendre, car l'admissibilité et le coût se détériorent avec l'âge."},
+{per:"tra",r:1,id:"1.4",p:"b",n:0,t:"Assurance vie — réévaluer les besoins réels",d:"Les besoins évoluent : dettes réduites, enfants adultes. Réévaluer si la couverture est excédentaire ou insuffisante.",ct:"Nous recommandons de revoir vos besoins en assurance vie à l'approche de la retraite. Vos obligations ont évolué — dettes réduites, enfants devenus autonomes — et votre couverture devrait être ajustée en conséquence pour s'assurer qu'elle sert vos intérêts actuels et vos objectifs de transmission."},
+{per:"tra",r:1,id:"1.5",p:"b",n:0,t:"Testament et mandat — révision obligatoire préretraite",d:"La transition vers la retraite modifie fondamentalement la situation patrimoniale. Révision obligatoire avec le notaire.",ct:"Nous recommandons une révision complète de votre testament et de votre mandat d'inaptitude à l'approche de la retraite. Votre situation patrimoniale change considérablement lors de cette transition — il est essentiel que ces documents reflètent fidèlement vos nouvelles réalités et vos intentions actuelles."},
+{per:"tra",r:1,id:"1.6",p:"i",n:0,t:"Convention d'actionnaires — mise à jour valeur et couverture",d:"Mettre à jour le mécanisme d'évaluation et la couverture d'assurance vie croisée selon la valeur actuelle.",ct:"Nous recommandons de mettre à jour votre convention d'actionnaires pour refléter la valeur actuelle de votre entreprise et les modalités prévues pour votre départ. Cette mise à jour est particulièrement importante si une transmission ou une vente est envisagée dans les prochaines années."},
+{per:"tra",r:1,id:"1.7",p:"b",n:0,t:"Désignations de bénéficiaires — révision finale préretraite",d:"Révision systématique sur REER, FERR, CELI, polices, régimes de retraite. Valider la coordination avec le testament.",ct:"Nous recommandons une révision finale de vos désignations de bénéficiaires avant la retraite. À l'approche du décaissement de vos régimes enregistrés, il est crucial que les bonnes personnes soient désignées sur chacun de vos comptes et polices, en cohérence avec vos objectifs successoraux."},
+{per:"tra",r:2,id:"2.1",p:"i",n:0,t:"Réduction progressive du salaire actif — impact multi-dimensionnel",d:"Impact sur : critère 5 500 heures, obligations RRI, droits REER, cotisations RRQ. Réduction graduelle recommandée.",ct:"Nous recommandons de planifier la réduction de votre salaire plusieurs années avant votre retraite. Une diminution graduelle vous permet de préserver certains avantages fiscaux importants et de vous adapter progressivement à un niveau de revenus différent, tout en évitant des effets indésirables sur vos régimes de retraite."},
+{per:"tra",r:2,id:"2.2",p:"i",n:0,t:"Purification de la société — admissibilité ECGC si vente envisagée",d:"Si vente dans 24-36 mois : vérifier les tests APE. Extraire actifs excédentaires : CDC, IMRTD, transfert vers Holdco (délai 24 mois).",ct:"Nous recommandons de «purifier» les actifs de votre société si une vente est envisagée dans les prochaines années. Cette démarche consiste à éliminer les actifs qui ne sont pas directement liés à vos activités, afin de vous qualifier pour une importante exonération fiscale lors de la vente de votre entreprise."},
+{per:"tra",r:2,id:"2.3",p:"i",n:0,t:"Évaluation formelle de la valeur de l'entreprise",d:"Si vente envisagée ou gel successoral : obtenir une évaluation indépendante de la JVM par un expert.",ct:"Nous recommandons d'obtenir une évaluation formelle de la valeur de votre entreprise. Connaître la juste valeur marchande est essentiel pour planifier votre retraite, structurer une éventuelle vente, mettre à jour votre convention d'actionnaires et maximiser les avantages fiscaux disponibles."},
+{per:"tra",r:2,id:"2.4",p:"i",n:0,t:"RRI — cotisations finales et options à la retraite",d:"Maximiser les dernières cotisations. Options à la retraite : rente viagère ou transfert au REER/FERR.",ct:"Nous recommandons de maximiser les dernières cotisations à votre Régime de retraite individuel. Les cotisations annuelles augmentent avec l'âge — les années précédant votre retraite sont les plus avantageuses. Il faudra également choisir la meilleure option disponible au moment de votre départ."},
+{per:"tra",r:2,id:"2.5",p:"i",n:0,t:"ECGC résiduel — maximiser avant la retraite ou la vente",d:"Vérifier le solde d'ECGC disponible. Planifier la distribution des actions de la fiducie aux bénéficiaires au moins 24 mois avant la vente.",ct:"Nous recommandons de vous assurer que tous les membres de votre famille visés peuvent utiliser pleinement leur exonération cumulative des gains en capital lors de la vente de votre entreprise. Bien planifiée, cette exonération peut représenter plusieurs centaines de milliers de dollars d'économies d'impôt par personne."},
+{per:"tra",r:2,id:"2.6",p:"i",n:0,t:"Fiducie familiale — actions préalables à la vente ou dissolution",d:"Si la fiducie a plus de 18 ans : anticiper la règle des 21 ans. Planifier la distribution avant l'échéance.",ct:"Nous recommandons de prendre les mesures nécessaires concernant votre fiducie familiale avant une vente ou une dissolution. Des délais minimaux s'appliquent — ne pas les respecter pourrait vous priver d'économies fiscales importantes au moment de la transaction."},
+{per:"tra",r:2,id:"2.7",p:"b",n:0,t:"Élimination des dettes personnelles avant la retraite",d:"Cibler l'entrée en retraite sans dettes à taux élevé. L'hypothèque peut subsister si le taux est faible.",ct:"Nous recommandons de viser l'entrée à la retraite sans dettes à taux élevé. Réduire vos obligations financières avant de cesser de travailler vous assure une plus grande liberté et une meilleure flexibilité dans la gestion de vos revenus de retraite."},
+{per:"tra",r:3,id:"3.1",p:"b",n:0,t:"REER — maximiser les dernières années de cotisation",d:"Les années de revenu élevé avant la retraite sont les meilleures opportunités de cotisation REER (taux marginal de 53,31 % QC).",ct:"Nous recommandons de maximiser vos cotisations REER dans les années précédant votre retraite, alors que votre taux d'imposition est encore élevé. C'est la période où chaque dollar cotisé vous procure le plus grand avantage fiscal — une opportunité à ne pas manquer."},
+{per:"tra",r:3,id:"3.2",p:"b",n:0,t:"CELI — maximiser et repositionner vers le décaissement",d:"Continuer à maximiser les cotisations annuelles et commencer à repositionner vers des actifs générateurs de revenus stables.",ct:"Nous recommandons de revoir la composition de votre CELI en vue de la retraite. En plus de continuer à maximiser vos cotisations annuelles, il peut être judicieux d'y intégrer des placements qui vous procureront des revenus stables lors du décaissement — le CELI sera votre premier outil de décaissement à la retraite."},
+{per:"tra",r:3,id:"3.3",p:"b",n:0,t:"REEE — planifier le décaissement final",d:"Si les enfants terminent bientôt leurs études : utiliser les sommes disponibles de façon optimale avant l'échéance.",ct:"Nous recommandons de planifier les derniers retraits de votre REEE. Si vos enfants terminent bientôt leurs études, il est important d'utiliser les sommes disponibles de façon optimale avant l'échéance, afin de minimiser l'impôt payé et d'éviter de perdre les subventions non utilisées."},
+{per:"tra",r:3,id:"3.4",p:"i",n:0,t:"CDC — distribuer prioritairement avant la retraite",d:"Planifier un ou plusieurs dividendes de capital dans les années précédant la retraite.",ct:"Nous recommandons de distribuer le solde disponible de votre compte de dividende en capital avant votre retraite. Ces sommes peuvent vous être versées entièrement libres d'impôt — il serait dommage de ne pas profiter de cette opportunité avant de modifier votre structure de rémunération."},
+{per:"tra",r:3,id:"3.5",p:"i",n:0,t:"IMRTD — récupération planifiée sur 3-5 ans",d:"Calculer le solde total et établir un plan de récupération progressive via des dividendes imposables.",ct:"Nous recommandons d'établir un plan sur plusieurs années pour récupérer l'impôt remboursable accumulé dans votre société. Cette récupération se fait lors du versement de dividendes — une planification adéquate vous permet de récupérer ces sommes tout en minimisant l'impôt payé sur les distributions."},
+{per:"tra",r:3,id:"3.6",p:"i",n:0,t:"Placements corporatifs — repositionner vers le profil de décaissement",d:"Commencer la transition du portefeuille de la phase accumulation vers la phase revenus-décaissement.",ct:"Nous recommandons de commencer à repositionner vos placements corporatifs en anticipation de la retraite. Un portefeuille conçu pour la phase d'accumulation est différent de celui qui convient à la phase de décaissement — une transition graduelle bien planifiée est préférable à un changement brusque au moment de la retraite."},
+{per:"tra",r:4,id:"4.1",p:"b",n:0,t:"Modéliser le revenu net souhaité à la retraite",d:"Établir un budget de retraite détaillé : dépenses fixes, variables, ponctuelles, tampon d'inflation (~2,5-3 %/an).",ct:"Nous recommandons d'établir un budget de retraite détaillé qui reflète réellement vos aspirations et votre style de vie souhaité. Ce budget est le fondement de tout votre plan de décaissement — sans cible précise, il est impossible de savoir si vous avez suffisamment épargné ou quelle est la meilleure façon d'utiliser vos actifs."},
+{per:"tra",r:4,id:"4.2",p:"b",n:0,t:"Fenêtre fiscale de transition — exploiter les années à faible revenu",d:"Entre la cessation des revenus actifs et le début des prestations gouvernementales : conversion REER, réalisation de gains, cotisations CELI.",ct:"Nous recommandons de planifier vos revenus pendant la période de transition entre la fin de votre carrière et le début de vos prestations gouvernementales. Cette fenêtre représente souvent quelques années où votre taux d'imposition est plus faible — une opportunité stratégique pour optimiser certains aspects de votre situation fiscale."},
+{per:"tra",r:4,id:"4.3",p:"b",n:0,t:"RRQ — décision finale sur le timing",d:"Confirmer la stratégie : anticiper à 60 ans (-30 %), demander à 65 ans (base), reporter à 70 ans (+36 %). Obtenir le relevé de participations.",ct:"Nous recommandons d'analyser soigneusement le meilleur moment pour demander votre Rente du Régime de rentes du Québec. Cette décision est importante et en grande partie irréversible — elle mérite une analyse personnalisée tenant compte de votre situation globale et de vos autres sources de revenus."},
+{per:"tra",r:4,id:"4.4",p:"b",n:0,t:"SV — confirmer la stratégie de report",d:"Report jusqu'à 70 ans (+36 %). Calculer l'impact du seuil de récupération (90 997 $) sur les revenus projetés.",ct:"Nous recommandons de confirmer votre stratégie concernant la pension de la Sécurité de la vieillesse. Reporter la demande peut augmenter vos paiements mensuels de façon permanente — mais encore faut-il disposer d'autres sources de revenus suffisantes pour les années précédant la demande."},
+{per:"tra",r:4,id:"4.5",p:"b",n:0,t:"Fonds de pension — confirmer les options définitives",d:"Rente viagère (prévisibilité, couverture du conjoint) vs transfert au FERR (flexibilité). Décision généralement irrévocable.",ct:"Nous recommandons de prendre le temps d'analyser en profondeur les options disponibles concernant votre fonds de pension. La décision entre une rente garantie à vie et un transfert dans un FERR est généralement irrévocable — elle mérite une analyse approfondie et, si possible, l'opinion d'un actuaire indépendant."},
+{per:"tra",r:4,id:"4.6",p:"b",n:0,t:"Planifier la liquidité de transition",d:"Maintenir 12-24 mois de dépenses en liquidités pour la période entre la cessation et le début des prestations.",ct:"Nous recommandons de planifier vos besoins en liquidités pendant la transition vers la retraite. Avoir accès à des fonds facilement disponibles pour couvrir vos dépenses courantes vous évite d'avoir à vendre des actifs à un moment inopportun — l'un des risques les plus fréquents en début de retraite."},
+{per:"tra",r:4,id:"4.7",p:"e",n:0,t:"Options à la retraite du régime de retraite employeur",d:"Recenser toutes les options : rente viagère, valeur de transfert au FERR, rente différée. Décision souvent irrévocable.",ct:"Nous recommandons de bien analyser toutes les options disponibles dans le cadre de votre régime de retraite d'employeur. Les choix que vous ferez — type de rente, protection du conjoint, options de retrait — sont généralement définitifs et méritent une attention particulière avant de prendre votre décision."},
+{per:"tra",r:5,id:"5.1",p:"i",n:0,t:"Pipeline post-mortem — structurer et documenter avant le décès",d:"Documenter et préparer la stratégie avant le décès. Économie typique : 100 000-200 000 $ sur 1 M$ de valeur corporative.",ct:"Nous recommandons de planifier dès maintenant la stratégie qui permettra à vos héritiers d'éviter une double imposition sur les actifs de votre société à votre décès. Cette préparation, à réaliser bien avant le décès, peut permettre à votre famille d'économiser plusieurs dizaines ou centaines de milliers de dollars lors du règlement de votre succession."},
+{per:"tra",r:5,id:"5.2",p:"b",n:0,t:"Fiducie testamentaire qualifiée — analyser la pertinence",d:"Une FTQ établie par testament est imposée à des taux progressifs. Particulièrement utile si un bénéficiaire a des besoins particuliers ou des revenus élevés.",ct:"Nous recommandons d'évaluer la mise en place d'une fiducie testamentaire dans votre testament. Cette structure peut permettre à vos héritiers de payer moins d'impôt sur les revenus générés par les actifs que vous leur transmettez — un avantage qui peut représenter des économies significatives sur plusieurs années après votre décès."},
+{per:"tra",r:5,id:"5.3",p:"b",n:0,t:"Don planifié — structurer avant la retraite",d:"Si objectifs philanthropiques : structurer les dons pendant que les revenus actifs sont encore élevés (crédits plus précieux au taux marginal élevé).",ct:"Nous recommandons de structurer vos dons à des organismes de bienfaisance dans le cadre de votre planification globale. Certaines stratégies sont particulièrement avantageuses fiscalement — le don d'actions cotées dont la valeur a augmenté, par exemple, vous permet d'éviter l'impôt sur le gain tout en bénéficiant d'un crédit d'impôt pour don."},
+{per:"tra",r:5,id:"5.4",p:"i",n:0,t:"Assurance vie corporative — adéquation finale et stratégie de sortie",d:"Vérifier la cohérence avec la valeur successorale actuelle. Si la société sera dissoute : considérer le transfert de la police.",ct:"Nous recommandons de vérifier que votre assurance vie corporative est bien alignée avec vos objectifs de transmission de patrimoine. À l'approche de la retraite, il est important de s'assurer que le montant couvert et la façon dont le produit sera distribué à votre décès correspondent à vos intentions successorales actuelles."},
+{per:"tra",r:5,id:"5.5",p:"b",n:0,t:"Transfert intergénérationnel — planification si entreprise familiale",d:"Règles post-C208 : contrôle effectif par l'enfant pendant au moins 36 mois. Coordination avec le plan de succession opérationnelle.",ct:"Nous recommandons de planifier soigneusement le transfert de votre entreprise à la génération suivante si c'est une avenue envisagée. Des règles fiscales favorables existent pour ce type de transfert, mais elles comportent des conditions strictes qui nécessitent une planification plusieurs années à l'avance."},
+{per:"dec",r:1,id:"1.1",p:"b",n:0,t:"Établir et réviser annuellement le budget de retraite",d:"Trois phases : active (voyages, loisirs élevés), intermédiaire (dépenses stables), tardive (soins). Intégrer l'inflation et les dépenses extraordinaires.",ct:"Nous recommandons de maintenir un budget de retraite à jour et de le réviser chaque année. Vos dépenses évoluent au fil de la retraite — les coûts de loisirs et de voyages ont tendance à diminuer avec les années, mais les frais de santé peuvent augmenter significativement. Un budget réaliste est essentiel pour ajuster votre stratégie de décaissement."},
+{per:"dec",r:1,id:"1.2",p:"b",n:0,t:"Cartographier toutes les sources de revenus disponibles",d:"Inventorier : FERR, CELI, régimes de retraite, RRQ, SV, dividendes corporatifs, revenus de placement. Modéliser sur 20-30 ans.",ct:"Nous recommandons de dresser un portrait complet de toutes vos sources de revenus à la retraite et de modéliser leur évolution sur 20 à 30 ans. Cette vue d'ensemble est indispensable pour prendre des décisions éclairées tout au long de votre retraite et s'assurer que vos actifs vous survivront."},
+{per:"dec",r:1,id:"1.3",p:"b",n:0,t:"Établir et documenter l'ordre de décaissement optimal",d:"Ordre recommandé : (1) CELI; (2) CDC; (3) non-enregistrés; (4) FERR; (5) dividendes; (6) RRQ+SV. Documenter et réviser annuellement.",ct:"Nous recommandons d'établir et de documenter un ordre précis de décaissement de vos actifs. L'ordre dans lequel vous puisez dans vos différentes sources de revenus a un impact important sur le montant total d'impôt que vous paierez sur la durée de votre retraite — une planification rigoureuse peut représenter des économies considérables."},
+{per:"dec",r:1,id:"1.4",p:"b",n:0,t:"Conversion REER → FERR — timing et stratégie",d:"Obligatoire au 31 décembre de l'année des 71 ans. Possible avant si le taux marginal est plus faible. Option : utiliser l'âge du conjoint plus jeune.",ct:"Nous recommandons de planifier la conversion de votre REER en Fonds enregistré de revenu de retraite (FERR). Cette conversion est obligatoire à 71 ans, mais peut être avantageuse de l'effectuer plus tôt dans certaines circonstances. À partir de la conversion, des retraits minimaux annuels imposables seront obligatoires."},
+{per:"dec",r:1,id:"1.5",p:"b",n:0,t:"Retraits FERR — planifier au-delà du minimum obligatoire",d:"Les retraits minimaux augmentent chaque année avec l'âge. Retirer plus que le minimum en début de retraite peut être avantageux.",ct:"Nous recommandons de planifier vos retraits du FERR de façon proactive, en tenant compte non seulement des minimums obligatoires, mais aussi de votre situation fiscale globale. Des retraits bien calibrés dès le début de la retraite peuvent éviter une accumulation excessive qui entraînerait une charge fiscale plus lourde plus tard."},
+{per:"dec",r:1,id:"1.6",p:"b",n:0,t:"Fractionner le revenu de pension avec le conjoint",d:"Jusqu'à 50 % du revenu de pension admissible peut être attribué au conjoint (FERR après 65 ans, rentes PD/RRI).",ct:"Nous recommandons d'utiliser le fractionnement du revenu de pension avec votre conjoint. Cette stratégie vous permet d'attribuer une portion de vos revenus de retraite admissibles à votre conjoint pour fins d'imposition, ce qui peut réduire sensiblement l'impôt total payé par votre ménage."},
+{per:"dec",r:1,id:"1.7",p:"b",n:0,t:"Maintenir une réserve de liquidités accessible",d:"Maintenir 12-24 mois de dépenses en liquidités (CELI, CPG rachetable, compte épargne). Évite les liquidations forcées lors des baisses de marché.",ct:"Nous recommandons de maintenir une réserve de liquidités facilement accessibles tout au long de votre retraite. Cette réserve vous évite d'avoir à vendre des placements lors d'une baisse des marchés pour couvrir vos dépenses — l'un des risques les plus importants pour les retraités, surtout en début de retraite."},
+{per:"dec",r:2,id:"2.1",p:"b",n:0,t:"Lisser le revenu imposable annuel — gérer les paliers de taux",d:"Établir un revenu imposable cible annuel en dessous d'un palier de taux. Combler l'écart avec des retraits CELI.",ct:"Nous recommandons de gérer activement votre revenu imposable d'une année à l'autre pour éviter de grimper inutilement dans des paliers d'imposition plus élevés. En coordonnant vos différentes sources de revenus et vos retraits du CELI, il est possible de maintenir votre impôt à un niveau plus prévisible et plus avantageux."},
+{per:"dec",r:2,id:"2.2",p:"b",n:0,t:"Gérer le seuil de récupération de la SV (90 997 $ en 2025)",d:"Surveiller annuellement le revenu imposable. Outils : CELI, fractionner avec le conjoint, ajuster les dividendes corporatifs.",ct:"Nous recommandons de surveiller annuellement votre revenu net pour éviter que votre pension de la Sécurité de la vieillesse soit réduite. Au-delà d'un certain seuil de revenus, le gouvernement récupère une partie de cette prestation — une planification adéquate peut vous aider à préserver ce revenu additionnel."},
+{per:"dec",r:2,id:"2.3",p:"b",n:0,t:"Cristallisation planifiée des gains en capital latents",d:"En années à faible revenu : réaliser des gains en capital latents pour utiliser l'espace fiscal disponible et réduire la facture au décès.",ct:"Nous recommandons de planifier la réalisation de gains en capital latents dans vos portefeuilles de façon stratégique. En choisissant les bonnes années pour vendre certains actifs, il est possible de payer moins d'impôt sur ces gains tout en réduisant la facture fiscale éventuelle lors de votre décès."},
+{per:"dec",r:2,id:"2.4",p:"b",n:0,t:"Pertes en capital — utilisation stratégique",d:"Identifier les placements en perte pour compenser des gains en capital réalisés (même année ou 3 années précédentes).",ct:"Nous recommandons d'identifier les placements en perte dans vos portefeuilles afin de les utiliser stratégiquement pour compenser des gains en capital réalisés. Cette démarche permet de réduire votre impôt sur les gains de placement de façon tout à fait légale et efficace."},
+{per:"dec",r:2,id:"2.5",p:"b",n:0,t:"Crédit pour revenu de pension — s'assurer de l'admissibilité",d:"Crédit fédéral sur les premiers 2 000 $ de revenu de pension admissible. Crédit QC équivalent.",ct:"Nous recommandons de nous assurer que vous bénéficiez du crédit d'impôt pour revenu de pension auquel vous avez droit. Ce crédit est offert aux retraités qui reçoivent certains types de revenus de retraite admissibles et peut réduire votre impôt annuel de façon non négligeable."},
+{per:"dec",r:2,id:"2.6",p:"b",n:0,t:"Révision fiscale proactive chaque automne (avant le 31 décembre)",d:"Chaque octobre-novembre : estimer le revenu imposable, identifier les actions à prendre avant le 31 décembre.",ct:"Nous recommandons d'effectuer une révision fiscale proactive chaque automne, avant la fin de l'année. Cette démarche vous permet d'identifier et de mettre en œuvre des stratégies pour réduire votre impôt avant que l'année ne soit terminée — à défaut, il est trop tard pour agir."},
+{per:"dec",r:2,id:"2.7",p:"i",n:0,t:"Décaissement corporatif — exécuter l'ordre optimal chaque année",d:"Chaque année : vérifier CDC → distribuer, calculer IMRTD récupérable, ajuster selon le taux marginal souhaité.",ct:"Nous recommandons de suivre rigoureusement l'ordre optimal de décaissement de vos avoirs corporatifs chaque année. En commençant par les sources les moins imposées et en coordonnant chaque retrait avec votre situation fiscale annuelle, il est possible de réduire substantiellement l'impôt total payé au cours de votre retraite."},
+{per:"dec",r:3,id:"3.1",p:"b",n:0,t:"RRQ — confirmer la demande au moment choisi",d:"Valider la date de demande et confirmer avec Service Canada. Vérifier le montant estimé sur le relevé de participations.",ct:"Nous recommandons de confirmer votre demande de Rente du Régime de rentes du Québec conformément à votre plan établi. Assurez-vous de soumettre votre demande suffisamment à l'avance, car le traitement peut prendre plusieurs semaines, et vérifiez que le montant correspond à vos estimations."},
+{per:"dec",r:3,id:"3.2",p:"b",n:0,t:"SV — confirmer la demande et surveiller le revenu annuel",d:"Confirmer la date de demande. Une fois reçue : surveiller annuellement le revenu vs le seuil de récupération.",ct:"Nous recommandons de soumettre votre demande de pension de la Sécurité de la vieillesse conformément à votre stratégie, puis de surveiller annuellement votre revenu par rapport au seuil de récupération. Une bonne gestion de vos sources de revenus peut vous permettre de conserver l'intégralité de cette pension."},
+{per:"dec",r:3,id:"3.3",p:"b",n:0,t:"Crédit en raison de l'âge (65 ans+) — maximiser",d:"Crédit fédéral et québécois non remboursable. Se réduit progressivement si le revenu net dépasse ~44 000 $.",ct:"Nous recommandons de nous assurer que vous bénéficiez pleinement du crédit d'impôt en raison de l'âge auquel vous avez droit à compter de vos 65 ans. En gérant vos revenus de façon adéquate, il est possible de préserver ce crédit qui réduit votre impôt annuel."},
+{per:"dec",r:3,id:"3.4",p:"b",n:0,t:"Supplément de revenu garanti (SRG) — vérifier si applicable",d:"Généralement non applicable pour HNWI. Vérifier lors d'années à très faible revenu imposable.",ct:"Nous recommandons de vérifier si vous pourriez être admissible au Supplément de revenu garanti lors d'années où votre revenu imposable est particulièrement faible. Cette prestation non imposable s'ajoute à la Sécurité de la vieillesse et peut représenter un revenu additionnel appréciable."},
+{per:"dec",r:3,id:"3.5",p:"b",n:0,t:"Allocation au conjoint survivant — planifier les implications",d:"Si le conjoint décède : réviser le budget, les sources de revenus et les désignations de bénéficiaires.",ct:"Nous recommandons de planifier à l'avance les implications financières du décès d'un conjoint sur l'autre. Cette transition implique des ajustements importants — révision du budget, des sources de revenus et des désignations — qui doivent être anticipés pour ne pas prendre vos proches par surprise."},
+{per:"dec",r:4,id:"4.1",p:"i",n:0,t:"Liquidation progressive vs maintien de la Holdco",d:"Évaluer maintien (actifs productifs), réduction progressive ou dissolution. Coûts de maintien ~3 000-8 000 $/an.",ct:"Nous recommandons d'analyser s'il est plus avantageux de maintenir votre société de gestion, de la liquider progressivement ou de la dissoudre formellement à la retraite. Cette décision dépend de vos besoins de revenus, de vos objectifs de transmission et des coûts associés au maintien de la structure."},
+{per:"dec",r:4,id:"4.2",p:"i",n:0,t:"CDC — épuiser le solde en priorité absolue chaque année",d:"Vérifier annuellement le solde CDC disponible et distribuer en priorité avant tout autre type de dividende.",ct:"Nous recommandons de distribuer en priorité les sommes disponibles dans le compte de dividende en capital de votre société, chaque année où ce solde est positif. Ces distributions vous parviennent entièrement libres d'impôt — aucune autre source de revenu dans votre société n'offre cet avantage."},
+{per:"dec",r:4,id:"4.3",p:"i",n:0,t:"IMRTD — récupération finale planifiée",d:"Planifier la récupération complète avant la dissolution ou le décès. Chaque 1 $ de dividende ordinaire récupère 38,33 cents d'IMRTD.",ct:"Nous recommandons de planifier la récupération complète de l'impôt remboursable accumulé dans votre société. Cet impôt a déjà été prélevé sur vos revenus de placement — sa récupération est un objectif prioritaire de votre plan de décaissement corporatif."},
+{per:"dec",r:4,id:"4.4",p:"i",n:0,t:"Pipeline post-mortem — valider la structure avec le notaire",d:"Valider avec le notaire et le fiscaliste que la stratégie est documentée et prête à être mise en œuvre. Économie potentielle : 100 000-200 000 $ sur 1 M$.",ct:"Nous recommandons de valider avec votre notaire et votre fiscaliste que la stratégie de planification successorale de votre société est bien documentée et prête à être exécutée. Vos héritiers bénéficieront de cette préparation au moment du règlement de votre succession — une économie potentielle significative."},
+{per:"dec",r:4,id:"4.5",p:"i",n:0,t:"Règle des 21 ans (fiducie familiale) — surveiller les délais",d:"Au 21e anniversaire de la fiducie : disposition présumée à la JVM. Planifier la distribution aux bénéficiaires avant ce délai.",ct:"Nous recommandons de surveiller attentivement les délais applicables à votre fiducie familiale. Au 21e anniversaire de la fiducie, une règle fiscale particulière s'applique automatiquement et pourrait entraîner une facture fiscale importante et évitable si la planification n'est pas effectuée à l'avance."},
+{per:"dec",r:4,id:"4.6",p:"i",n:0,t:"Dissolution formelle de la société — planification et timing",d:"Étapes : distribuer les actifs dans l'ordre optimal, régler les impôts, dissolution formelle. Coordonner avec comptable et avocat.",ct:"Nous recommandons de planifier soigneusement la dissolution formelle de votre société si elle ne répond plus à aucun besoin. L'ordre dans lequel les actifs sont distribués lors de la dissolution a un impact fiscal important — cette étape ne doit pas être improvisée et requiert une coordination avec vos professionnels."},
+{per:"dec",r:5,id:"5.1",p:"b",n:0,t:"Testament — révision tous les 3 ans minimum",d:"Révision avec le notaire tous les 3 ans ou après tout événement majeur. Actifs qui diminuent, valeurs qui changent.",ct:"Nous recommandons de revoir votre testament avec votre notaire tous les 3 ans, ou après tout événement important dans votre vie. Votre situation évolue au fil de la retraite — il est essentiel que votre testament demeure un reflet fidèle de vos volontés et de votre réalité patrimoniale."},
+{per:"dec",r:5,id:"5.2",p:"b",n:0,t:"Désignations de bénéficiaires — révision annuelle",d:"Vérifier annuellement toutes les désignations. Adapter après décès, divorce, naissance.",ct:"Nous recommandons de vérifier annuellement les désignations de bénéficiaires sur l'ensemble de vos comptes et polices. Un changement dans votre situation familiale peut rendre certaines désignations obsolètes ou inadéquates — cette vérification simple permet d'éviter des situations indésirables pour vos proches."},
+{per:"dec",r:5,id:"5.3",p:"b",n:0,t:"Don de son vivant vs legs testamentaire — analyse fiscale",d:"Analyser les implications fiscales et personnelles de chaque approche selon les actifs concernés.",ct:"Nous recommandons d'analyser avec nous s'il est préférable dans votre situation de faire des dons à vos proches de votre vivant ou de leur léguer des actifs par testament. Les implications fiscales et les considérations personnelles de chaque approche sont très différentes — une analyse personnalisée s'impose."},
+{per:"dec",r:5,id:"5.4",p:"b",n:0,t:"Don d'actifs appréciés à un organisme de bienfaisance",d:"Don d'actions cotées appréciées directement : aucun impôt sur le gain + crédit d'impôt pour don = double avantage.",ct:"Nous recommandons d'envisager le don d'actions ou de placements dont la valeur a augmenté directement à un organisme de bienfaisance. Cette stratégie vous permet d'éviter l'impôt sur le gain en capital tout en obtenant un reçu fiscal pour le plein montant — un résultat nettement plus avantageux qu'un don en argent."},
+{per:"dec",r:5,id:"5.5",p:"b",n:0,t:"Planification des soins de longue durée — financement",d:"Évaluer les ressources disponibles (3 000-7 000 $/mois). Intégrer dans le plan de décaissement.",ct:"Nous recommandons d'intégrer à votre plan financier une provision pour les coûts éventuels de soins de longue durée. Ces coûts peuvent être substantiels et durer plusieurs années — une planification adéquate protège votre qualité de vie et préserve le patrimoine que vous souhaitez transmettre à vos proches."},
+{per:"dec",r:5,id:"5.6",p:"b",n:0,t:"Fiducie testamentaire qualifiée — bénéfices fiscaux",d:"Une FTQ est imposée à des taux progressifs (vs taux forfaitaire pour les fiducies ordinaires). Doit être prévue dans le testament.",ct:"Nous recommandons d'évaluer la mise en place d'une fiducie testamentaire dans votre testament. Cette structure peut permettre à vos héritiers de payer moins d'impôt sur les revenus générés par les actifs hérités, selon leur situation personnelle — un avantage à prévoir dès maintenant dans votre planification successorale."},
+{per:"dec",r:5,id:"5.7",p:"i",n:0,t:"Transfert intergénérationnel final — si non complété",d:"Dernière opportunité pour les règles C-208 (contrôle effectif 36 mois). Éviter d'attendre le décès.",ct:"Nous recommandons d'agir dès maintenant si vous souhaitez transférer votre entreprise à un enfant ou à un proche. Des règles fiscales favorables existent pour ce type de transaction, mais elles comportent des conditions strictes — notamment une période de contrôle de 36 mois par le successeur — qui nécessitent d'agir sans tarder."}
 ];
 
-// ─── STATE ────────────────────────────────────────────────────────────
-const KEY='td-fp-v4';
-const S={per:'acc',prof:'all',newOnly:false,openT:new Set([1,2,3,4,5]),openI:new Set(),checked:new Set()};
+const KEY='td-fp-v5';
+const S={per:'acc',prof:'all',newOnly:false,openT:new Set([1,2,3,4,5]),openI:new Set(),checked:new Set(),drPer:'all'};
 (function(){try{const r=localStorage.getItem(KEY);if(r){const p=JSON.parse(r);S.checked=new Set(p.c||[]);}}catch(e){}})();
 function save(){try{localStorage.setItem(KEY,JSON.stringify({c:[...S.checked]}));}catch(e){}}
 
@@ -393,7 +415,7 @@ function filt(){
     return true;
   });
 }
-function itemKey(per,id){return per+'-'+id;}
+function ik(per,id){return per+'-'+id;}
 
 function setPer(id){S.per=id;S.openT=new Set([1,2,3,4,5]);S.openI=new Set();renderPerTabs();render();}
 function setProf(el){document.querySelectorAll('.pfbtn').forEach(b=>b.className='pfbtn'+(b===el?' on':''));S.prof=el.dataset.p;render();}
@@ -405,71 +427,173 @@ function toggleT(id){S.openT.has(id)?S.openT.delete(id):S.openT.add(id);render()
 function toggleI(key){S.openI.has(key)?S.openI.delete(key):S.openI.add(key);render();}
 function toggleC(key){S.checked.has(key)?S.checked.delete(key):S.checked.add(key);save();renderPerTabs();render();}
 
+// SYNTHESIS
+function openSynthesis(){
+  document.getElementById('backdrop').className='backdrop open';
+  document.getElementById('drawer').className='drawer open';
+  renderDrTabs();renderDrBody();
+}
+function closeSynthesis(){
+  document.getElementById('backdrop').className='backdrop';
+  document.getElementById('drawer').className='drawer';
+}
+function setDrPer(id){S.drPer=id;renderDrTabs();renderDrBody();}
+
+function renderDrTabs(){
+  const c=document.getElementById('dr-tabs');c.innerHTML='';
+  const tabs=[{id:'all',name:'Toutes les périodes'},...PERIODS.map(p=>({id:p.id,name:p.name}))];
+  tabs.forEach(t=>{
+    const el=document.createElement('div');
+    el.className='dr-tab '+(S.drPer===t.id?'on':'off');
+    el.textContent=t.name;el.onclick=()=>setDrPer(t.id);c.append(el);
+  });
+}
+
+function getCheckedItems(perFilter){
+  const pers=perFilter==='all'?['acc','tra','dec']:[perFilter];
+  return DATA.filter(i=>S.checked.has(ik(i.per,i.id))&&pers.includes(i.per));
+}
+
+function renderDrBody(){
+  const body=document.getElementById('dr-body');body.innerHTML='';
+  const items=getCheckedItems(S.drPer);
+  if(!items.length){
+    const e=document.createElement('div');e.className='dr-empty';
+    e.innerHTML='<div style="font-size:32px;margin-bottom:10px">&#9989;</div><div>Aucun point coché pour cette sélection.</div><div style="margin-top:6px;font-size:11px">Cochez des points dans la liste pour les voir apparaître ici.</div>';
+    body.append(e);return;
+  }
+  let curPer='',curTier=0;
+  items.forEach(item=>{
+    const perInfo=PERIODS.find(p=>p.id===item.per);
+    const tierInfo=TIERS[item.per].find(t=>t.id===item.r);
+    if(item.per!==curPer){
+      const ph=document.createElement('div');ph.className='dr-per-hdr';
+      ph.textContent=perInfo.lbl+' — '+perInfo.name;body.append(ph);curPer=item.per;curTier=0;
+    }
+    if(item.r!==curTier){
+      const th=document.createElement('div');th.className='dr-tier-hdr';
+      const dot=document.createElement('div');dot.className='dr-tier-dot';dot.style.background=tierInfo.a;
+      const lbl=document.createElement('span');lbl.textContent='Niveau '+item.r+' — '+tierInfo.n;
+      th.append(dot,lbl);body.append(th);curTier=item.r;
+    }
+    const card=document.createElement('div');card.className='dr-item';
+    const title=document.createElement('div');title.className='dr-item-title';title.textContent='['+item.id+'] '+item.t;
+    const text=document.createElement('div');text.className='dr-item-text';text.textContent=item.ct||'';
+    const copyBtn=document.createElement('button');copyBtn.className='dr-copy-btn';copyBtn.textContent='Copier';
+    copyBtn.onclick=()=>{
+      navigator.clipboard.writeText(item.ct||'').then(()=>{
+        copyBtn.textContent='✓ Copié';copyBtn.className='dr-copy-btn copied';
+        setTimeout(()=>{copyBtn.textContent='Copier';copyBtn.className='dr-copy-btn';},2000);
+      });
+    };
+    card.append(title,text,copyBtn);body.append(card);
+  });
+}
+
+function copyAllTexts(){
+  const items=getCheckedItems(S.drPer);
+  if(!items.length){alert('Aucun point coché pour cette sélection.');return;}
+  let txt='SYNTHÈSE CLIENT — PLAN FINANCIER\n';
+  txt+='Préparé par Olivier Quintal, B.A.A. (spéc.), Pl. Fin.\n';
+  txt+='Date : '+new Date().toLocaleDateString('fr-CA',{year:'numeric',month:'long',day:'numeric'})+'\n';
+  txt+='='.repeat(60)+'\n';
+  let curPer='',curTier=0;
+  items.forEach(i=>{
+    const perInfo=PERIODS.find(p=>p.id===i.per);
+    const tierInfo=TIERS[i.per].find(t=>t.id===i.r);
+    if(i.per!==curPer){txt+='\n'+'─'.repeat(50)+'\n'+perInfo.lbl.toUpperCase()+' — '+perInfo.name.toUpperCase()+'\n'+'─'.repeat(50)+'\n';curPer=i.per;curTier=0;}
+    if(i.r!==curTier){txt+='\nNiveau '+i.r+' — '+tierInfo.n+'\n';curTier=i.r;}
+    txt+='\n['+i.id+'] '+i.t+'\n'+i.ct+'\n';
+  });
+  navigator.clipboard.writeText(txt).then(()=>alert('Texte copié dans le presse-papier!'));
+}
+
+function exportWord(){
+  const items=getCheckedItems(S.drPer);
+  if(!items.length){alert('Aucun point coché pour cette sélection.');return;}
+  const date=new Date().toLocaleDateString('fr-CA',{year:'numeric',month:'long',day:'numeric'});
+  let rows='';
+  let curPer='',curTier=0;
+  items.forEach(i=>{
+    const perInfo=PERIODS.find(p=>p.id===i.per);
+    const tierInfo=TIERS[i.per].find(t=>t.id===i.r);
+    if(i.per!==curPer){
+      rows+='<tr><td colspan="2" style="background:#0F2344;color:#D4AF37;font-size:13pt;font-weight:bold;padding:10pt 14pt;border-top:6pt solid #D4AF37;">'+perInfo.lbl+' — '+perInfo.name+'</td></tr>';
+      curPer=i.per;curTier=0;
+    }
+    if(i.r!==curTier){
+      rows+='<tr><td colspan="2" style="background:#F3F5FA;color:#0F2344;font-size:10pt;font-weight:bold;padding:7pt 14pt;border-left:4pt solid '+tierInfo.a+';">Niveau '+i.r+' — '+tierInfo.n+'</td></tr>';
+      curTier=i.r;
+    }
+    rows+='<tr><td style="padding:8pt 14pt;font-size:9pt;font-weight:bold;color:#0F2344;width:30%;vertical-align:top;border-bottom:1pt solid #E8EBF2;">['+i.id+'] '+i.t+'</td><td style="padding:8pt 14pt;font-size:9pt;color:#444;vertical-align:top;border-bottom:1pt solid #E8EBF2;line-height:1.5;">'+i.ct+'</td></tr>';
+  });
+  const html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><style>body{font-family:Arial,sans-serif;margin:2cm}table{width:100%;border-collapse:collapse}</style></head><body>'+
+    '<table><tr><td colspan="2" style="background:#0F2344;padding:16pt 14pt;"><div style="color:#D4AF37;font-size:8pt;letter-spacing:0.12em;">GESTION DE PATRIMOINE TD &middot; CONSEILS DE PLACEMENT PRIVÉS</div><div style="color:white;font-size:16pt;font-weight:bold;margin:6pt 0 4pt;">Synthèse client &mdash; Plan financier</div><div style="color:#7A90BB;font-size:9pt;">'+date+' &nbsp;&middot;&nbsp; Olivier Quintal, B.A.A. (spéc.), Pl. Fin. &nbsp;&middot;&nbsp; 418-654-3042</div></td></tr>'+
+    rows+
+    '<tr><td colspan="2" style="padding:8pt 14pt;font-size:8pt;color:#888;border-top:1pt solid #ddd;font-style:italic;">Ce document est fourni à titre éducatif et informatif. Il ne constitue pas un avis juridique, fiscal ou financier personnalisé. Conseils de placement privés, Gestion de patrimoine TD est une division de TD Waterhouse Canada Inc., filiale de La Banque Toronto-Dominion.</td></tr>'+
+    '</table></body></html>';
+  const blob=new Blob(['\ufeff'+html],{type:'application/msword'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='synthese_client_'+new Date().toISOString().slice(0,10)+'.doc';
+  a.click();URL.revokeObjectURL(a.href);
+}
+
 function exportOpen(){
-  const items=filt().filter(i=>!S.checked.has(itemKey(i.per,i.id)));
+  const items=filt().filter(i=>!S.checked.has(ik(i.per,i.id)));
   if(!items.length){alert('Tous les points de cette vue sont complétés!');return;}
   const perName=PERIODS.find(p=>p.id===S.per).name;
   let txt='POINTS OUVERTS — Liste de vérification Plan financier\n';
   txt+='Période : '+perName+' | Québec 2025\n';
   txt+='Généré le '+new Date().toLocaleDateString('fr-CA',{year:'numeric',month:'long',day:'numeric'})+'\n';
-  txt+='Profil : '+(S.prof==='inc'?'Incorporé / Propriétaire':S.prof==='emp'?'Salarié':'Tous les profils')+'\n';
-  txt+=('─'.repeat(60))+'\n';
+  txt+='='.repeat(60)+'\n';
   let cur=0;
   items.forEach(i=>{
-    if(i.r!==cur){const t=TIERS[S.per].find(x=>x.id===i.r);txt+='\nNIVEAU '+i.r+' — '+t.n.toUpperCase()+'\n'+('─'.repeat(40))+'\n';cur=i.r;}
+    if(i.r!==cur){const t=TIERS[S.per].find(x=>x.id===i.r);txt+='\nNIVEAU '+i.r+' — '+t.n.toUpperCase()+'\n'+'─'.repeat(40)+'\n';cur=i.r;}
     txt+='□ ['+i.id+'] '+i.t+'\n';
   });
-  txt+='\n'+('─'.repeat(60))+'\n'+items.length+' point'+(items.length>1?'s':'')+' ouvert'+(items.length>1?'s':'')+'\n\n';
+  txt+='\n'+'─'.repeat(60)+'\n'+items.length+' point'+(items.length>1?'s':'')+' ouvert'+(items.length>1?'s':'')+'\n\n';
   txt+='Olivier Quintal, B.A.A. (spéc.), Pl. Fin.\n418-654-3042 | Olivier.Quintal@td.com\n';
-  txt+='Conseils de placement privés, Gestion de patrimoine TD\n';
   const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
   a.download='points_ouverts_'+S.per+'_'+new Date().toISOString().slice(0,10)+'.txt';
   a.click();URL.revokeObjectURL(a.href);
 }
 
-// ─── RENDER PERIOD TABS ───────────────────────────────────────────────
 function renderPerTabs(){
-  const container=document.getElementById('per-tabs');
-  container.innerHTML='';
+  const c=document.getElementById('per-tabs');c.innerHTML='';
   PERIODS.forEach(p=>{
-    const allItems=DATA.filter(i=>i.per===p.id);
-    const doneItems=allItems.filter(i=>S.checked.has(itemKey(i.per,i.id)));
-    const pct=allItems.length?Math.round(doneItems.length/allItems.length*100):0;
+    const allI=DATA.filter(i=>i.per===p.id);
+    const doneI=allI.filter(i=>S.checked.has(ik(i.per,i.id)));
+    const pct=allI.length?Math.round(doneI.length/allI.length*100):0;
     const on=S.per===p.id;
     const tab=document.createElement('div');tab.className='ptab '+(on?'on':'off');tab.onclick=()=>setPer(p.id);
-    tab.innerHTML=`<div class="ptab-num">${p.id==='acc'?'1':p.id==='tra'?'2':'3'}</div><div class="ptab-txt"><div class="ptab-lbl">${p.lbl}</div><div class="ptab-name">${p.name}</div><div class="ptab-prog">${pct}% complété</div></div>`;
-    container.append(tab);
+    tab.innerHTML='<div class="ptab-num">'+(p.id==='acc'?'1':p.id==='tra'?'2':'3')+'</div><div class="ptab-txt"><div class="ptab-lbl">'+p.lbl+'</div><div class="ptab-name">'+p.name+'</div><div class="ptab-prog">'+pct+' % complété</div></div>';
+    c.append(tab);
   });
 }
 
-// ─── RENDER MAIN ─────────────────────────────────────────────────────
 function render(){
   const all=filt();
-  const done=all.filter(i=>S.checked.has(itemKey(i.per,i.id))).length;
+  const done=all.filter(i=>S.checked.has(ik(i.per,i.id))).length;
   const tot=all.length;
   const pct=tot?Math.round(done/tot*100):0;
   document.getElementById('pf').style.width=pct+'%';
   document.getElementById('pn').textContent=done;
   document.getElementById('pt').textContent=tot;
   document.getElementById('pp').textContent=' '+pct+'%';
-
   const container=document.getElementById('tiers');container.innerHTML='';
   const tierDefs=TIERS[S.per];
-
   tierDefs.forEach(tier=>{
     const items=all.filter(i=>i.r===tier.id);
     if(!items.length)return;
-    const chk=items.filter(i=>S.checked.has(itemKey(i.per,i.id))).length;
+    const chk=items.filter(i=>S.checked.has(ik(i.per,i.id))).length;
     const newCnt=items.filter(i=>i.n).length;
     const isOpen=S.openT.has(tier.id);
     const pctT=items.length?Math.round(chk/items.length*100):0;
-
     const card=document.createElement('div');card.className='card';
     const hdr=document.createElement('div');hdr.className='card-hdr';
     hdr.style.cssText='border-left-color:'+tier.a+';background:'+(isOpen?tier.bg:'#fff');
     hdr.onclick=()=>toggleT(tier.id);
-
     const num=document.createElement('div');num.className='tier-num';num.style.background=tier.a;num.textContent=tier.id;
     const meta=document.createElement('div');meta.className='tier-meta';
     const nrow=document.createElement('div');nrow.className='tier-nrow';
@@ -479,7 +603,6 @@ function render(){
     if(newCnt>0&&!S.newOnly){const b=document.createElement('span');b.className='tier-npill';b.textContent='★ '+newCnt+' ajout'+(newCnt>1?'s':'');nrow.append(b);}
     const sub=document.createElement('div');sub.className='tier-sub';sub.textContent=tier.s;
     meta.append(nrow,sub);
-
     const right=document.createElement('div');right.className='tier-r';
     const mini=document.createElement('div');mini.className='mini-prog';
     const track=document.createElement('div');track.className='mini-track';
@@ -491,11 +614,10 @@ function render(){
     cnt.append(nn,dd);mini.append(track,cnt);
     const chev=document.createElement('div');chev.className='chev'+(isOpen?' open':'');chev.textContent='▾';
     right.append(mini,chev);hdr.append(num,meta,right);card.append(hdr);
-
     if(isOpen){
       const list=document.createElement('div');list.className='items-list';
       items.forEach((item,idx)=>{
-        const iKey=itemKey(item.per,item.id);
+        const iKey=ik(item.per,item.id);
         const isChk=S.checked.has(iKey);
         const isExp=S.openI.has(iKey);
         const row=document.createElement('div');row.className='item'+(isChk?' done':'');
@@ -524,6 +646,7 @@ function render(){
     }
     container.append(card);
   });
+  if(document.getElementById('drawer').classList.contains('open'))renderDrBody();
 }
 
 renderPerTabs();
